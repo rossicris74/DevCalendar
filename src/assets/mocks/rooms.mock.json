@@ -13,5 +13,10 @@
     "text": "Nails",
     "id": 3,
     "color": "green"
+  },
+  {
+    "text": "Saturn",
+    "id": 3,
+    "color": "blue"
   }
 ]
