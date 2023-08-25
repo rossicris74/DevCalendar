@@ -11,8 +11,16 @@
       [endDayHour]="20"
       [groups]="['priorityId']"
       [height]="700"
+      [firstDayOfWeek]="1"
       [crossScrollingEnabled]="true"
+      dateCellTemplate="dateCellTemplate"
     >
+      <div *dxTemplate="let data of 'dateCellTemplate'">
+        <div class="name">
+          {{['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven',
+          'Sab'][data.date.getDay()]}}
+        </div>
+      </div>
       <dxi-view type="week" name="Settimana"> </dxi-view>
       <dxi-view type="month" name="Mese"> </dxi-view>
       <dxi-view type="day" name="Giorno"> </dxi-view>
