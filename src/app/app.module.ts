@@ -1,12 +1,12 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxSchedulerModule, DxSwitchModule } from 'devextreme-angular';
+import { DevCalendarModule} from '../app/components/dev-calendar/dev-calendar-module';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, DxSchedulerModule, DxSwitchModule, HttpClientModule],
+  imports: [DevCalendarModule, BrowserModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

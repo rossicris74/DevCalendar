@@ -6,6 +6,7 @@ import { DevCalendarComponent } from './dev-calendar.component';
 @NgModule({
   declarations: [DevCalendarComponent],
   imports: [DxSchedulerModule, DxSwitchModule, CommonModule],
+  exports:[DevCalendarComponent],
   providers: [],
 })
-export class AppModule {}
+export class DevCalendarModule {}

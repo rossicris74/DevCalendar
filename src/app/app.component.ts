@@ -23,7 +23,6 @@ export class AppComponent {
 
   rooms: RoomsType.Rooms = [];
   appointments: AppointmentsType.Appointments = [];
-
   groupByDate = true;
 
   constructor(

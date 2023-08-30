@@ -1,42 +1,6 @@
 <html lang="en">
   <head> </head>
   <body class="dx-viewport">
-    <dx-scheduler
-      timeZone="America/Los_Angeles"
-      [dataSource]="appointments"
-      currentView="day"
-      [currentDate]="currentDate"
-      [(groupByDate)]="groupByDate"
-      [startDayHour]="7"
-      [endDayHour]="20"
-      [groups]="['priorityId']"
-      [height]="700"
-      [firstDayOfWeek]="1"
-      [crossScrollingEnabled]="true"
-      dateCellTemplate="dateCellTemplate"
-    >
-      <div *dxTemplate="let data of 'dateCellTemplate'">
-        <div class="name">
-          {{['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven',
-          'Sab'][data.date.getDay()]}}
-        </div>
-      </div>
-      <dxi-view type="week" name="Settimana"> </dxi-view>
-      <dxi-view type="month" name="Mese"> </dxi-view>
-      <dxi-view type="day" name="Giorno"> </dxi-view>
-      <dxi-resource
-        [dataSource]="rooms"
-        fieldExpr="priorityId"
-        label="Stanze"
-        [allowMultiple]="true"
-      ></dxi-resource>
-    </dx-scheduler>
-
-    <div class="options">
-      <div class="caption">raggruppamento per data</div>
-      <div class="option">
-        <dx-switch [(value)]="groupByDate"> </dx-switch>
-      </div>
-    </div>
+    <dev-calendar></dev-calendar>
   </body>
 </html>
