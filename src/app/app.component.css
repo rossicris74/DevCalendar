@@ -1,3 +1,4 @@
+
 :host {
   display: flex;
   flex-direction: column;
@@ -19,8 +20,3 @@
   display: inline-block;
 }
 
-::ng-deep
-  .dx-scheduler-work-space-group-by-date
-  .dx-scheduler-group-header-content {
-  font-size: 11px;
-}

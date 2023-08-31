@@ -1,12 +1,12 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { DevCalendarModule} from '../app/components/dev-calendar/dev-calendar-module';
+import { MainContainerModule} from './components/main-container/main-container.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [DevCalendarModule, BrowserModule, HttpClientModule],
+  imports: [MainContainerModule, BrowserModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

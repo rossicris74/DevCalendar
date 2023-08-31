@@ -1,4 +1,4 @@
-import {Inject,Injectable} from '@angular/core'
+import {Injectable} from '@angular/core'
 import {
     AppointmentsService,
     AppointmentsType,
@@ -10,6 +10,7 @@ import {
 @Injectable()
 export class DevCalendarSandbox {
     rooms$ = this.roomsService.getRoomsLocal();
+    appointments$ = this.appointmentsService.getAppointmentsLocal();
     currentDate: Date = new Date(2021, 3, 21);
     rooms: RoomsType.Rooms = [];
     appointments: AppointmentsType.Appointments = [];

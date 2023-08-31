@@ -1,0 +1,136 @@
+////
+/// Design Tokens
+/// @group core
+/// @group design-tokens
+////
+
+:root {
+    /// Abstract color variable
+    /// @group color
+    --color-primary: #0090d1; // overwrite same value
+    --color-primary-verylight: rgb(222, 240, 247); // overwrite same value
+    --color-primary-mid: rgb(185, 230, 246);
+    --color-primary-light: #00c3ea; // overwrite same value
+    --color-primary-dark: #005075; // overwrite same value
+    --color-primary-darkest: #152935; // overwrite same value
+    --color-primary-purple: #c51290;
+    --color-primary-verydark: #003f5c; // overwrite same value
+    --color-gray: #5a6872; // overwrite same value
+    --color-gray-mid: rgb(157, 166, 173);
+    --color-gray-dark: #35383a; // overwrite same value
+    --color-gray-light: rgb(228, 234, 240); // overwrite same value
+    --color-gray-verylight: #f2f5f8; // overwrite same value
+    --color-white: #ffffff; // overwrite same value
+    --color-black: #000a12;
+    --bil-color-shadow: rgba(0, 0, 0, 0.1);
+    --bil-color-shadow-text: rgba(21, 41, 53, 0.24);
+    --color-semantic-danger: #d82829;
+    --color-semantic-success: #09822a;
+    --color-semantic-warning: #fdb927;
+    --color-semantic-disabled: rgb(201, 217, 232);
+    --color-balance-type-ordinary: #361d5b;
+    --color-balance-type-condensed: #7745ec;
+    --color-balance-type-micro: #9b8ead;
+    --color-balance-state-wip: #8cb9c3;
+    --color-balance-state-completed: #0d6c80;
+    --color-balance-wizard-state-completato: #00aa00;
+    --color-balance-wizard-state-daverificare: #da2c38;
+    --color-modefinance-AAA: #2e7d32;
+    --color-modefinance-AA: #4caf50;
+    --color-modefinance-A: #9ccc65;
+    --color-modefinance-BBB: #d4e157;
+    --color-modefinance-BB: #ffe633;
+    --color-modefinance-B: #ff9900;
+    --color-modefinance-CCC: #ffadad;
+    --color-modefinance-CC: #ff7070;
+    --color-modefinance-C: #ff0606;
+    --color-modefinance-D: #cc0000;
+  
+    /// TABLE NI BACKGROUD COLOR AND BORDER BOTTOM
+    --bk-color-border-line: linear-gradient(
+      to right,
+      var(--color-primary-verydark) 66%,
+      var(--color-primary-verydark) 0%
+    );
+    --bk-size-calculate: 3px 2px;
+    --bk-color-border-line-modify: linear-gradient(
+      to right,
+      var(--color-balance-type-condensed) 66%,
+      var(--color-white) 0%
+    );
+    --bk-size-calculate-modify: 10px 2px;
+  
+    /// Abstract decor variables
+    /// @group decor
+    --border-default: 1px solid var(--color-gray-light);
+    --border-confirm: 1px solid var(--color-primary);
+    --border-confirm-dark: 1px solid var(--color-primary-dark);
+    --border-danger: 1px solid var(--color-semantic-danger);
+    --border-success: 1px solid var(--color-semantic-success);
+    --border-warning: 1px solid var(--color-semantic-warning);
+    --border-transparent: 1px solid transparent;
+    --border-editor: solid 0.5px var(--brand-primary-shade-light);
+    --border-table: 1px solid var(--brand-primary-shade-light);
+    --bil-box-shadow: 0 2px 8px 0 var(--bil-color-shadow);
+    --box-shadow-low: 0 2px 5px 0 var(--bil-color-shadow);
+    --bil-text-shadow-base: 1px 1px 0 var(--bil-color-shadow-text);
+    --gradient-degrees: 315deg; // overwrite same value
+    --border-radius: 4px;
+    --border-radius-big: 16px;
+    --border-dimension: 1px;
+  
+    /// Abstract spacing variables
+    /// @group spacing
+    --space-bit: 2px;
+    --space-xxs: 4px;
+    --space-xs: 8px; // overwrite same value
+    --space-sm: 12px; // overwrite same value
+    --space-md: 16px; // overwrite same value
+    --space-mm: 18px; // overwrite same value
+    --space-lg: 24px; // overwrite same value
+    --space-xl: 32px; // overwrite same value
+    --space-xxl: 40px; // overwrite same value
+    --space-big: 48px; // overwrite same value
+    --space-huge: 56px; // overwrite same value
+    --space-giant: 72px;
+    --space-very-giant: 82px;
+    --space-pagination: 50px;
+  
+    /// Abstract font variables
+    /// @group font
+    --font-family-title: 'Cairo', sans-serif; // overwrite same value
+    --font-family-text: 'Roboto', sans-serif; // overwrite same value
+    --font-family-icon: 'Font Awesome 5 Pro';
+    --font-size-xs: 12px; // overwrite same value
+    --font-size-sm: 14px; // overwrite same value
+    --font-size-md: 16px; // overwrite same value
+    --font-size-ml: 18px;
+    --bil-font-size-lg: 24px;
+    --bil-font-size-xl: 32px;
+    --bil-font-size-title: 40px;
+    --font-size-xxl: 60px;
+    --font-weight-solid: 900;
+    --font-weight-bold: 700; // overwrite same value
+    --font-weight-semibold: 600; // overwrite same value
+    --font-weight-normal: 500;
+    --bil-font-weight-regular: 400;
+    --bil-font-weight-light: 300;
+    --line-height-base: 1.25; // overwrite same value
+  
+    /// Abstract z-indexes variables
+    /// @group z-index
+    --z-index-base: 1; // overwrite same value
+    --z-index-high: 100; // overwrite same value
+    --z-index-overlay: 800; // overwrite same value
+    --z-index-modal: 825; // overwrite same value
+    --z-index-overthetop: 900; // overwrite same value
+  
+    /// Abstract motion variables
+    /// @group motions
+    --motion-duration-micro: 100ms; // overwrite same value
+    --motion-easing-entering: ease-out; // overwrite same value
+    --motion-easing-leaving: ease-in; // overwrite same value
+    --motion-counter-loader: 2000ms;
+  }
+  
+  

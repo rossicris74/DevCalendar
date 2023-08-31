@@ -1,14 +1,20 @@
+
 <ng-container
 *ngIf="{
-  rooms: devCalendarSandbox.rooms$ | async
+  rooms: devCalendarSandbox.rooms$ | async,
+  appointments: devCalendarSandbox.appointments$ | async
 } as data";
 >
+<div call="dx-viewport">
+<!--La ngIf nel dx-scheduler mi serve per evitare che, 
+    se rooms è vuoto il componente vada in errore -->
 <dx-scheduler
+      *ngIf="data.rooms && data.rooms.length >0"
       timeZone="America/Los_Angeles"
-      [dataSource]="appointments"
-      currentView="day"
-      [currentDate]="currentDate"
-      [(groupByDate)]="groupByDate"
+      [dataSource]="data.appointments"
+      currentView="week"
+      [currentDate]="devCalendarSandbox.currentDate"
+      [(groupByDate)]="devCalendarSandbox.groupByDate"
       [startDayHour]="7"
       [endDayHour]="20"
       [groups]="['priorityId']"
@@ -37,7 +43,9 @@
     <div class="options">
       <div class="caption">raggruppamento per data</div>
       <div class="option">
-        <dx-switch [(value)]="groupByDate"> </dx-switch>
+        <dx-switch [(value)]="devCalendarSandbox.groupByDate"> </dx-switch>
       </div>
     </div>
+  </div>
   </ng-container>
+  
