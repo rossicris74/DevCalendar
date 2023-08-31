@@ -7,6 +7,7 @@ import {
   RoomsService,
   RoomsType,
 } from '../../api/src/lib/rooms/public-api';
+import { DevCalendarSandbox } from './dev-calendar.sandbox';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -20,15 +21,14 @@ if (!/localhost/.test(document.location.host)) {
 
 export class DevCalendarComponent {
   currentDate: Date = new Date(2021, 3, 21);
-
   rooms: RoomsType.Rooms = [];
   appointments: AppointmentsType.Appointments = [];
-
   groupByDate = true;
 
   constructor(
     private readonly roomsService: RoomsService,
-    private readonly appointmentsService: AppointmentsService
+    private readonly appointmentsService: AppointmentsService,
+    readonly devCalendarSandbox: DevCalendarSandbox
   ) {
     this.roomsService.getRoomsLocal().subscribe((rooms) => {
       this.rooms = rooms;

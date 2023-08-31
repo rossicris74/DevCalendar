@@ -1,3 +1,8 @@
+<ng-container
+*ngIf="{
+  rooms: devCalendarSandbox.rooms$ | async
+} as data";
+>
 <dx-scheduler
       timeZone="America/Los_Angeles"
       [dataSource]="appointments"
@@ -22,7 +27,7 @@
       <dxi-view type="month" name="Mese"> </dxi-view>
       <dxi-view type="day" name="Giorno"> </dxi-view>
       <dxi-resource
-        [dataSource]="rooms"
+        [dataSource]="data.rooms"
         fieldExpr="priorityId"
         label="Stanze"
         [allowMultiple]="true"
@@ -35,3 +40,4 @@
         <dx-switch [(value)]="groupByDate"> </dx-switch>
       </div>
     </div>
+  </ng-container>
