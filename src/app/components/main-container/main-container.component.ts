@@ -1,4 +1,5 @@
 import { Component} from '@angular/core';
+import { fas, faFolder, faHome, faCoffee, fa4 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'main-container',
@@ -7,4 +8,8 @@ import { Component} from '@angular/core';
 })
 
 export class MainContainerComponent {
+
+  faHome = faHome;
+  faFolder = faFolder;
+  fa4 = [faFolder, fa4];
 }

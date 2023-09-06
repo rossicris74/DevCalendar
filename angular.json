@@ -22,7 +22,8 @@
             "styles": [
               "node_modules/devextreme/dist/css/dx.light.css",
               "src/styles.css",
-              "src/app/base/design-teck.scss"
+              "src/app/base/design-teck.scss",
+              "node_modules/font-awesome/css/font-awesome.css"
             ],
             "scripts": []
           },
