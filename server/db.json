@@ -1,0 +1,23 @@
+{
+  "rooms": [
+  {
+    "text": "Moon",
+    "id": 1,
+    "color": "#1e90ff"
+  },
+  {
+    "text": "Sun",
+    "id": 2,
+    "color": "#ff9747"
+  },
+  {
+    "text": "Nails",
+    "id": 3,
+    "color": "green"
+  },
+{
+    "text": "Neptune",
+    "id": 4,
+    "color": "blue"
+  }
+]}
