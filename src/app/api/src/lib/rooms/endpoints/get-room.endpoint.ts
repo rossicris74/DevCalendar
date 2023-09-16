@@ -3,11 +3,11 @@ import { ApiFailureResponse } from '../../api/responses/api-failure-response.typ
 import { ApiSuccessResponse } from '../../api/responses/api-success-response.type';
 import { RoomsType } from '../public-api';
 
-export const getRoomsJsonDbEndpoint = () => `rooms`;
-export const getRoomsLocalEndpoint = () => `/assets/mocks/rooms.mock.json`;
+export const getRoomJsonDbEndpoint = () => `room/`;
+export const getRoomLocalEndpoint = () => `/assets/mocks/rooms.mock.json`;
 
-export type GetRoomsSuccessResponse = ApiSuccessResponse<RoomsType.Rooms>;
+export type GetRoomSuccessResponse = ApiSuccessResponse<RoomsType.Room>;
 
-export type GetRoomsFailureResponse = ApiFailureResponse<{}>;
+export type GetRoomFailureResponse = ApiFailureResponse<{}>;
 
 export type GetRoomsBody = ApiBody<{}>;

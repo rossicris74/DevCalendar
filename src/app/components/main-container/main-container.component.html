@@ -1,25 +1,35 @@
+<ng-container 
+*ngIf="{menuNav: mainContainerSandbox.menuNav$ | async} 
+as data";
+>
 <div class="main-container">
   <div class="header-menu-oriz">
     <span class="menu-oriz-title">Dev Calendar</span>
   </div>
   <div class="body-container">
     <div class="header-menu-vert">
-      <linked-icon-box [iconName]="'fa-solid fa-users fa-2x'">
+      <!-- <linked-icon-box [iconName]="'fa-solid fa-users fa-2x'" (onClick)="navTo('folders')">
       </linked-icon-box>
       <linked-icon-box [iconName]="'fa-solid fa-bed fa-2x'">
       </linked-icon-box>
       <linked-icon-box [iconName]="'fa-solid fa-folder-open fa-2x'">
       </linked-icon-box>
       <linked-icon-box [iconName]="'fa-solid fa-calendar-days fa-2x'">
-      </linked-icon-box>
+      </linked-icon-box> -->
+      <ng-container *ngFor="let menuEle of data.menuNav">
+        <linked-icon-box [iconName]="menuEle.menuNavIcon" (onClick)="navTo('folders')">
+        </linked-icon-box>
+      </ng-container>
+
     </div>
     <div class="body-hidden"></div>
     <div class="body-elements">
       <div class="body-element">
         <div class="sub-body-element-">
-          <dev-calendar></dev-calendar>
+          <router-outlet></router-outlet>
         </div>
       </div>
     </div>
   </div>
 </div>
+</ng-container>

@@ -2,10 +2,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from '../api/api.service';
 import {
-  GetRoomsSuccessResponse,
-  getRoomsJsonDbEndpoint,
-  getRoomsLocalEndpoint,
-} from './endpoints/rooms.endpoint';
+  GetAllRoomsSuccessResponse,
+  getAllRoomsJsonDbEndpoint,
+  getAllRoomsLocalEndpoint,
+} from './endpoints/get-all-rooms.endpoint';
+import {
+  GetRoomSuccessResponse,
+  getRoomJsonDbEndpoint,
+  getRoomLocalEndpoint,
+} from './endpoints/get-room.endpoint';
 import { RoomsType } from './public-api';
 
 @Injectable({
@@ -14,12 +19,18 @@ import { RoomsType } from './public-api';
 export class RoomsService {
   constructor(private readonly api: ApiService) {}
 
-  getRoomsLocal(): Observable<RoomsType.Rooms> {
-    return this.api.readLocal<GetRoomsSuccessResponse>(getRoomsLocalEndpoint());
+  getAllRoomsLocal(): Observable<RoomsType.Rooms> {
+    return this.api.readLocal<GetAllRoomsSuccessResponse>(getAllRoomsLocalEndpoint());
   }
-  getRoomsJsonDb(): Observable<RoomsType.Rooms> {
-    return this.api.readJsonDb<GetRoomsSuccessResponse>(
-      getRoomsJsonDbEndpoint()
+  getAllRoomsJsonDb(): Observable<RoomsType.Rooms> {
+    return this.api.readJsonDb<GetAllRoomsSuccessResponse>(
+      getAllRoomsJsonDbEndpoint()
+    );
+  }
+
+  getRoomJsonDb(): Observable<RoomsType.Room> {
+    return this.api.readJsonDb<GetRoomSuccessResponse>(
+      getRoomJsonDbEndpoint()
     );
   }
 }

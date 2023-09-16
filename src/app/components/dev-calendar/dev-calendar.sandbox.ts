@@ -9,7 +9,7 @@ import {
   } from '../../api/src/lib/rooms/public-api';
 @Injectable()
 export class DevCalendarSandbox {
-    rooms$ = this.roomsService.getRoomsJsonDb();
+    rooms$ = this.roomsService.getAllRoomsJsonDb();
     appointments$ = this.appointmentsService.getAppointmentsLocal();
     currentDate: Date = new Date(2021, 3, 21);
     rooms: RoomsType.Rooms = [];
@@ -20,7 +20,7 @@ export class DevCalendarSandbox {
       private readonly roomsService: RoomsService,
       private readonly appointmentsService: AppointmentsService
     ) {
-      this.roomsService.getRoomsJsonDb().subscribe((rooms) => {
+      this.roomsService.getAllRoomsJsonDb().subscribe((rooms) => {
         this.rooms = rooms;
         console.log(this.rooms);
       });

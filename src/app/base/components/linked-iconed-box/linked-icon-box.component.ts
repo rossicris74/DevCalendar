@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'linked-icon-box',
@@ -8,4 +8,8 @@ import { Component, Input} from '@angular/core';
 
 export class LinkedIconBoxComponent {
   @Input() iconName: string ='fa-solid fa-folder-open fa-2x';
+  @Output() onClick = new EventEmitter<void>;
+
+
+
 }

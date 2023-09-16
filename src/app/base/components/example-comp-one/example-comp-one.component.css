@@ -1,0 +1,8 @@
+.linked-icon-box {
+    margin: var(--space-xs);
+    border: 1px solid;
+    padding: var(--space-xs);
+    border-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+  }
