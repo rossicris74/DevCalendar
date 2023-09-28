@@ -394,6 +394,17 @@ export class ApiService {
     );
   }
 
+  readBeUrl<Success>(endpoint: string, time = 60000): Observable<Success> {
+    const pippo: string = `${this.urlsProviderService.getBeUrl()}/${endpoint}`;
+    return callTimeout(
+      this.httpClient.get<Success>(
+        `${this.urlsProviderService.getBeUrl()}/${endpoint}`
+      ),
+      endpoint,
+      time
+    );
+  }
+
   readLocal<Success>(endpoint: string, time = 60000): Observable<Success> {
     return callTimeout(this.httpClient.get<Success>(endpoint), endpoint, time);
   }
