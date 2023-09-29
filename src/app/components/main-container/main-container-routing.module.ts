@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: '', component: DevCalendarComponent },
   { path: 'home', component: DevCalendarComponent },
   { path: 'folders', component: ExampleCompOneComponent },
+  { path: 'info-corsi', component: DevCalendarComponent },
 ];
 
 @NgModule({

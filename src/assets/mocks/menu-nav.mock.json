@@ -2,23 +2,23 @@
     {
       "menuNavId": 1,
       "menuNavDesc": "Home",
-      "menuNavLink": "/home",
+      "menuNavLink": "home",
       "menuNavClass": "",
       "menuNavIcon":"fa-solid fa-calendar-days fa-2x"
     },
     {
       "menuNavId": 2,
-      "menuNavDesc": "Info corsi",
-      "menuNavLink": "/info-corsi",
+      "menuNavDesc": "Folders",
+      "menuNavLink": "folders",
       "menuNavClass": "menuNavGree",
-      "menuNavIcon":"fa-solid fa-bed fa-2x"
+      "menuNavIcon":"fa-solid fa-folder-open fa-2x"
     },
     {
       "menuNavId": 3,
-      "menuNavDesc": "Eventi",
-      "menuNavLink": "/eventi",
+      "menuNavDesc": "Info corsi",
+      "menuNavLink": "info-corsi",
       "menuNavClass": "menuNavGree",
-      "menuNavIcon":"fa-solid fa-folder-open fa-2x"
+      "menuNavIcon":"fa-solid fa-bed fa-2x"
     }
   ]
   

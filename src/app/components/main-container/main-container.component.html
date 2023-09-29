@@ -17,7 +17,7 @@ as data";
       <linked-icon-box [iconName]="'fa-solid fa-calendar-days fa-2x'">
       </linked-icon-box> -->
       <ng-container *ngFor="let menuEle of data.menuNav">
-        <linked-icon-box [iconName]="menuEle.menuNavIcon" (onClick)="navTo('folders')">
+        <linked-icon-box [iconName]="menuEle.menuNavIcon" (onClick)="navTo(menuEle.menuNavLink)">
         </linked-icon-box>
       </ng-container>
 
