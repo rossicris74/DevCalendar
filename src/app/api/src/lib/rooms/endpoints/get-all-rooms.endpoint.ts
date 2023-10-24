@@ -5,6 +5,7 @@ import { RoomsType } from '../public-api';
 
 export const getAllRoomsJsonDbEndpoint = () => `rooms`;
 export const getAllRoomsLocalEndpoint = () => `/assets/mocks/rooms.mock.json`;
+export const getAllRoomsBeUrlEndpoint = () => `/stanza/1`;
 
 export type GetAllRoomsSuccessResponse = ApiSuccessResponse<RoomsType.Rooms>;
 

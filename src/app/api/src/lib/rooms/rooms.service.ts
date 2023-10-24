@@ -5,6 +5,7 @@ import {
   GetAllRoomsSuccessResponse,
   getAllRoomsJsonDbEndpoint,
   getAllRoomsLocalEndpoint,
+  getAllRoomsBeUrlEndpoint
 } from './endpoints/get-all-rooms.endpoint';
 import {
   GetRoomSuccessResponse,
@@ -25,6 +26,12 @@ export class RoomsService {
   getAllRoomsJsonDb(): Observable<RoomsType.Rooms> {
     return this.api.readJsonDb<GetAllRoomsSuccessResponse>(
       getAllRoomsJsonDbEndpoint()
+    );
+  }
+
+  getAllRoomsBeUrl(): Observable<RoomsType.Rooms> {
+    return this.api.readBeUrl<GetAllRoomsSuccessResponse>(
+      getAllRoomsBeUrlEndpoint()
     );
   }
 
