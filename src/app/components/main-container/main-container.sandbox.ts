@@ -18,6 +18,7 @@ export class MainContainerSandbox {
       private readonly roomsBeUrlService: RoomsBeUrlService.RoomsService
     ) {
       this.testBeUrl$.subscribe(ele => console.log(ele));
+      //Lancio api be symfony
       this.rooms$.subscribe(rooms => console.log(rooms));
     }
 }

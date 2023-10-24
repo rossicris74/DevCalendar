@@ -7,6 +7,6 @@ export class UrlsProviderService {
   }
 
   getBeUrl(): string {
-    return 'https://localhost:8000/api';
+    return 'http://localhost:8000/api';
   }
 }
