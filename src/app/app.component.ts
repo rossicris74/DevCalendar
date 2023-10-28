@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import * as TestState from './root-store/src/test/state';
 import * as TestActions from './root-store/src/test/test.actions';
 import * as TestSelectors from './root-store/src/test/test.selectors';
-
 @Component({
   selector: 'demo-app',
   templateUrl: 'app.component.html',
@@ -12,7 +11,8 @@ import * as TestSelectors from './root-store/src/test/test.selectors';
 export class AppComponent implements OnInit {
   getId$ = this.testStore.select(TestSelectors.getId);
   getDescr$ = this.testStore.select(TestSelectors.getDescr);
-  constructor(private readonly testStore: Store<TestState.State>) {}
+  constructor(private readonly testStore: Store<TestState.State>) {
+  }
 
   ngOnInit() {
     this.testStore.dispatch(

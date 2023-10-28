@@ -19,4 +19,8 @@
   margin-top: 10px;
   display: inline-block;
 }
+::ng-deep #data-grid-demo {
+  min-height: 530px;
+}
+
 

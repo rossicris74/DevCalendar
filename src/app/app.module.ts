@@ -10,18 +10,21 @@ import { MainContainerModule } from './components/main-container/main-container.
 import { TestStoreModule } from './root-store/src/test/test-store.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
+import { DxDataGridModule } from 'devextreme-angular';
+import { RoomsComponent } from './components/rooms/rooms.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,RoomsComponent],
   imports: [
     BrowserAnimationsModule,
-    TestStoreModule,
-    FontAwesomeModule,
-    MainContainerModule,
     BrowserModule,
-    HttpClientModule,
-    StoreModule.forRoot({}),
+    DxDataGridModule,
     EffectsModule.forRoot([]),
+    FontAwesomeModule,
+    HttpClientModule,
+    MainContainerModule,
+    TestStoreModule,
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       name: 'TryCalendar',

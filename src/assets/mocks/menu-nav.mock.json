@@ -15,8 +15,8 @@
     },
     {
       "menuNavId": 3,
-      "menuNavDesc": "Info corsi",
-      "menuNavLink": "info-corsi",
+      "menuNavDesc": "Rooms",
+      "menuNavLink": "rooms",
       "menuNavClass": "menuNavGree",
       "menuNavIcon":"fa-solid fa-bed fa-2x"
     }

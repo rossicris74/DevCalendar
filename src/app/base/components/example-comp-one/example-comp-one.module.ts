@@ -9,4 +9,4 @@ import {ExampleCompOneComponent} from './example-comp-one.component';
   exports:[ExampleCompOneComponent],
   providers: [],
 })
-export class LinkedIconBoxModule {}
+export class ExampleCompOneModule {}
