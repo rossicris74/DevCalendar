@@ -6,8 +6,6 @@ import { RoomsType } from '../public-api';
 export const getAllRoomsJsonDbEndpoint = () => `rooms`;
 export const getAllRoomsLocalEndpoint = () => `/assets/mocks/rooms.mock.json`;
 // Richiamo tute le stanze da symfony
-export const getAllRoomsBeUrlEndpoint = () => `stanzas`;
-
 export type GetAllRoomsSuccessResponse = ApiSuccessResponse<RoomsType.Rooms>;
 
 export type GetAllRoomsFailureResponse = ApiFailureResponse<{}>;

@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { ApiService } from '../api/api.service';
 import {
   GetAllRoomsSuccessResponse,
   getAllRoomsJsonDbEndpoint,
   getAllRoomsLocalEndpoint,
-  getAllRoomsBeUrlEndpoint
 } from './endpoints/get-all-rooms.endpoint';
+import {
+  GetAllRoomsBeSuccessResponse,
+  getAllRoomsBeUrlEndpoint
+} from './endpoints/get-all-rooms-be.endpoint';
 import {
   GetRoomSuccessResponse,
   getRoomJsonDbEndpoint,
   getRoomLocalEndpoint,
 } from './endpoints/get-room.endpoint';
-import { RoomsType } from './public-api';
+import * as RoomsType from './rooms.type';
+import * as RoomsHelper from './helpers/get-all-rooms-be.helper';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +27,7 @@ export class RoomsService {
   getAllRoomsLocal(): Observable<RoomsType.Rooms> {
     return this.api.readLocal<GetAllRoomsSuccessResponse>(getAllRoomsLocalEndpoint());
   }
+
   getAllRoomsJsonDb(): Observable<RoomsType.Rooms> {
     return this.api.readJsonDb<GetAllRoomsSuccessResponse>(
       getAllRoomsJsonDbEndpoint()
@@ -30,9 +35,9 @@ export class RoomsService {
   }
 
   getAllRoomsBeUrl(): Observable<RoomsType.Rooms> {
-    return this.api.readBeUrl<GetAllRoomsSuccessResponse>(
+    return this.api.readBeUrl<GetAllRoomsBeSuccessResponse>(
       getAllRoomsBeUrlEndpoint()
-    );
+    ).pipe(map(RoomsHelper.fromApiToClient));
   }
 
   getRoomJsonDb(): Observable<RoomsType.Room> {

@@ -11,7 +11,7 @@ import {Injectable} from '@angular/core'
 export class MainContainerSandbox {
     testBeUrl$ = this.testBeUrlService.getAllRoomsJsonDb();
     menuNav$ = this.menuNavService.getMenuNavLocal(); 
-    rooms$ = this.roomsBeUrlService.getAllRoomsBeUrl();
+    // rooms$ = this.roomsBeUrlService.getAllRoomsBeUrl();
     constructor(
       private readonly menuNavService: MenuNavService,
       private readonly testBeUrlService: RoomsService,
@@ -19,6 +19,6 @@ export class MainContainerSandbox {
     ) {
       this.testBeUrl$.subscribe(ele => console.log(ele));
       //Lancio api be symfony
-      this.rooms$.subscribe(rooms => console.log(rooms));
+      // this.rooms$.subscribe(rooms => console.log(rooms));
     }
 }

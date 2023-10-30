@@ -1,3 +1,4 @@
+<!--
 <div id="data-grid-demo">
   <dx-data-grid
     id="gridContainer"
@@ -14,7 +15,7 @@
       [allowDeleting]="true"
     >
       <dxo-popup
-        title="Employee Info"
+        title="Gestione Stanze"
         [showTitle]="true"
         [width]="700"
         [height]="525"
@@ -63,3 +64,44 @@
     <dxi-column dataField="Notes" [visible]="false"> </dxi-column>
   </dx-data-grid>
 </div>
+-->
+  <div id="data-grid-demo">
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="dataSource"
+    keyExpr="id"
+    [showBorders]="true"
+    (onSaved)="rowInserted($event)"
+  >
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-editing
+      mode="popup"
+      [allowUpdating]="true"
+      [allowAdding]="true"
+      [allowDeleting]="true"
+    >
+      <dxo-popup
+        title="Gestione Stanze"
+        [showTitle]="true"
+        [width]="700"
+        [height]="525"
+      >
+      </dxo-popup>
+      <dxo-form>
+        <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+          <dxi-item dataField="id"></dxi-item>
+          <dxi-item dataField="text"></dxi-item>
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing>
+
+    <dxi-column dataField="id" caption="Id" [width]="50"></dxi-column>
+    <dxi-column dataField="text" caption="Descrizione"></dxi-column>
+    
+  </dx-data-grid>
+</div>
+<!--
+  <div>
+  Work in progress
+</div>
+--> 
