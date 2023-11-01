@@ -10,8 +10,6 @@ import { DxDataGridModule } from 'devextreme-angular';
     RoomsComponent,
     BrowserModule,
     DxDataGridModule,
-  ],
-  declarations: [RoomsComponent],
-  exports:[RoomsComponent],
+  ]
 })
 export class RoomsModule {}

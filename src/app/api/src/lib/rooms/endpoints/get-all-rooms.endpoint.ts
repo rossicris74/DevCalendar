@@ -9,5 +9,3 @@ export const getAllRoomsLocalEndpoint = () => `/assets/mocks/rooms.mock.json`;
 export type GetAllRoomsSuccessResponse = ApiSuccessResponse<RoomsType.Rooms>;
 
 export type GetAllRoomsFailureResponse = ApiFailureResponse<{}>;
-
-export type GetAllRoomsBody = ApiBody<{}>;

@@ -14,7 +14,8 @@ import { DxDataGridModule } from 'devextreme-angular';
 import { RoomsComponent } from './components/rooms/rooms.component';
 
 @NgModule({
-  declarations: [AppComponent,RoomsComponent],
+  declarations: [AppComponent ,RoomsComponent
+  ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,

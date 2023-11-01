@@ -13,16 +13,31 @@ import {
 import {
   GetRoomSuccessResponse,
   getRoomJsonDbEndpoint,
-  getRoomLocalEndpoint,
 } from './endpoints/get-room.endpoint';
+import {
+  UpdateRoomSuccessResponse,
+  updateRoomEndpoint,
+  UpdateRoomBody
+} from './endpoints/update-room.endpoint';
+import {
+  CreateRoomSuccessResponse,
+  createRoomEndpoint,
+  CreateRoomBody
+} from './endpoints/create-room.endpoint';
+import {
+  DeleteRoomSuccessResponse,
+  deleteRoomEndpoint
+} from './endpoints/delete-room.endpoint';
 import * as RoomsType from './rooms.type';
 import * as RoomsHelper from './helpers/get-all-rooms-be.helper';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RoomsService {
-  constructor(private readonly api: ApiService) {}
+  constructor(private readonly api: ApiService, private http: HttpClient) {}
+
 
   getAllRoomsLocal(): Observable<RoomsType.Rooms> {
     return this.api.readLocal<GetAllRoomsSuccessResponse>(getAllRoomsLocalEndpoint());
@@ -44,5 +59,17 @@ export class RoomsService {
     return this.api.readJsonDb<GetRoomSuccessResponse>(
       getRoomJsonDbEndpoint()
     );
+  }
+
+  update (id:number, text:string):Observable<any> {
+     return this.api.update<UpdateRoomSuccessResponse, UpdateRoomBody>(updateRoomEndpoint(id),{"descrizione":text})
+  }
+
+  insert(text:string ):Observable<any> {
+     return this.api.create<CreateRoomSuccessResponse, CreateRoomBody>(createRoomEndpoint(),{"descrizione":text})
+  }
+
+  delete(id: number):Observable<any> {
+     return this.api.delete<DeleteRoomSuccessResponse>(deleteRoomEndpoint(id))
   }
 }

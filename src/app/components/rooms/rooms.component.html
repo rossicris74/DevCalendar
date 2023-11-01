@@ -71,7 +71,7 @@
     [dataSource]="dataSource"
     keyExpr="id"
     [showBorders]="true"
-    (onSaved)="rowInserted($event)"
+    (onSaved)="onSave($event)"
   >
     <dxo-paging [enabled]="false"></dxo-paging>
     <dxo-editing

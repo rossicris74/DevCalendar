@@ -9,5 +9,3 @@ export const getAllRoomsBeUrlEndpoint = () => `stanzas`;
 export type GetAllRoomsBeSuccessResponse = ApiSuccessResponse<RoomsType.RoomHydraApi>;
 
 export type GetAllRoomsBeFailureResponse = ApiFailureResponse<{}>;
-
-export type GetAllRoomsBeBody = ApiBody<{}>;
