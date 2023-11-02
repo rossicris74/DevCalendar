@@ -34,7 +34,7 @@ export class RoomsComponent {
     case 'insert':  
       this.rowInserted(data);
        break;  
-    case 'updated':
+    case 'update':
       this.rowUpdated(data);
        break; 
     case 'remove':

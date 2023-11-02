@@ -12,9 +12,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { DxDataGridModule } from 'devextreme-angular';
 import { RoomsComponent } from './components/rooms/rooms.component';
+import { ServiziComponent } from './components/servizi/servizi.component'
+
 
 @NgModule({
-  declarations: [AppComponent ,RoomsComponent
+  declarations: [AppComponent ,RoomsComponent, ServiziComponent
   ],
   imports: [
     BrowserAnimationsModule,
