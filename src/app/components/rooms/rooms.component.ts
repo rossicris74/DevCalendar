@@ -50,7 +50,7 @@ export class RoomsComponent implements OnInit{
  }
 
  rowInserted(room: RoomsApi.RoomsType.Room){
-  this.roomsApiService.insert(room.text).subscribe();
+  this.store.dispatch(roomsActions.insertRoom({room}));
  }
 
  rowUpdated(room: RoomsApi.RoomsType.Room){

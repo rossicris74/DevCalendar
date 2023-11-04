@@ -27,3 +27,17 @@ export const updateRoomFailure = createAction(
   '[Rooms API ] Update room failure', props<{msg: string, error: any}>(),
 )
 // Aggiornamento di una stanza - Fine
+
+// Inserimento di una stanza - Inizio
+export const insertRoom = createAction(
+  '[Rooms API ] Insert room', props<{room: RoomsType.Room}>(),
+);
+
+export const insertRoomSuccess = createAction(
+  '[Rooms API ] Insert room success', props<{room: RoomsType.RoomApi}>(),
+)
+
+export const insertRoomFailure = createAction(
+  '[Rooms API ] Insert room failure', props<{msg: string, error: any}>(),
+)
+// Inserimento di una stanza - Fine

@@ -51,6 +51,28 @@ export class RoomsEffects{
               ),
             ),
     );
+    
+    insertRoom = createEffect(() => 
+      this.actions$.pipe(
+        ofType(RoomsActions.insertRoom),
+            switchMap(({room}) => 
+              this.roomsService.insert(room.text).pipe(
+                    switchMap((newRoom) => 
+                        of<Action>(
+                            RoomsActions.insertRoomSuccess({room: newRoom}),
+                    ),
+                    ),
+                    catchError(error =>
+                      of(RoomsActions.insertRoomFailure({
+                        msg: 'Cannot update room',
+                        error
+                      }),
+                    ), 
+                  ),
+                ),
+              ),
+            ),
+    );
     constructor(private readonly actions$: Actions, private readonly roomsService: RoomsApi.RoomsService, private readonly store: Store<RootStoreState.State>){}
 }
 
