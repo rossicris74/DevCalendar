@@ -1,30 +1,30 @@
-import { Component, Injectable} from '@angular/core';
- import * as RoomsApi from '../../api/src/lib/rooms/public-api';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { Component, Injectable, OnInit} from '@angular/core';
+import * as RoomsApi from '../../api/src/lib/rooms/public-api';
+import * as roomsSelectors from '../../root-store/src/rooms/rooms.selectors';
+import * as roomsActions from '../../root-store/src/rooms/rooms.actions';
+import { Store } from '@ngrx/store';
+import * as RoomStoreState from '../../root-store/src/rooms/rooms.state';
+import * as Copy from '../../utils/deep-copy';
 
 @Component({
   selector: 'rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css'],
-  // providers: [RoomsService],
 })
 @Injectable({providedIn: 'root'})
-export class RoomsComponent {
+export class RoomsComponent implements OnInit{
   dataSource: RoomsApi.RoomsType.Rooms = [];
+  roomList$ = this.store.select(roomsSelectors.getRoomList);
   
   constructor(
+    private readonly store: Store<RoomStoreState.State>,
     readonly roomsApiService: RoomsApi.RoomsService
-    ) {
-    roomsApiService.getAllRoomsBeUrl().subscribe(rooms => 
-      {
-      this.dataSource = rooms});
-    // service.getEmployees();
-    // this.states = service.getStates();
-    // this.roomsApiService.getRoomJsonDb();
- }
+    ) {}
 
+
+  ngOnInit(): void {
+    this.roomList$.subscribe(roomsList => this.dataSource = Copy.deepCopy(roomsList))
+  }
 
  onSave(e:any){
   const typeSave = e.changes[0].type;
@@ -54,6 +54,6 @@ export class RoomsComponent {
  }
 
  rowUpdated(room: RoomsApi.RoomsType.Room){
-  this.roomsApiService.update(room.id,room.text).subscribe();
+  this.store.dispatch(roomsActions.updateRoom({room}));
  }
 }

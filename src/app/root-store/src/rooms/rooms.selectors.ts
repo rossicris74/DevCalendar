@@ -3,7 +3,7 @@ import { State } from './rooms.state';
 import { RoomsFeatureKey } from './rooms.reducers';
 
 export const getRoomsState = createFeatureSelector<State>(RoomsFeatureKey);
-const getRoomsListState = (state: State) => state.roomsList;
+const getRoomListState = (state: State) => state.roomList;
 
 /** Ritorna l'elenco dei documenti cliente*/
-export const getRoomsList = createSelector(getRoomsState, getRoomsListState);
+export const getRoomList = createSelector(getRoomsState, getRoomListState);

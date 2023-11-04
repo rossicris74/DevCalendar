@@ -5,7 +5,6 @@ import * as TestActions from './root-store/src/test/test.actions';
 import * as TestSelectors from './root-store/src/test/test.selectors';
 import * as RoomsState from './root-store/src/rooms/rooms.state';
 import * as RoomsActions from './root-store/src/rooms/rooms.actions';
-import * as RoomsSelectors from './root-store/src/rooms/rooms.selectors';
 @Component({
   selector: 'demo-app',
   templateUrl: 'app.component.html',
@@ -24,9 +23,9 @@ export class AppComponent implements OnInit {
         descr: 'Test',
       })
     );
-    // this.roomsStore.dispatch(
-    //  RoomsActions.getAllRoms()
-    // );
+     this.roomsStore.dispatch(
+      RoomsActions.getAllRooms()
+     );
     this.getId$.subscribe((id) => console.log('id: ' + id));
     this.getDescr$.subscribe((descr) => console.log('descr: ' + descr));
   }
