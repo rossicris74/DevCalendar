@@ -1,16 +1,16 @@
 import { NgModule} from '@angular/core';
 import { BrowserModule} from '@angular/platform-browser';
-import {ServiziComponent} from './servizi.component';
+import {ClientiComponent} from './clienti.component';
 import { CommonModule } from '@angular/common';
 import { DxDataGridModule } from 'devextreme-angular';
 
 @NgModule({
-  declarations: [ServiziComponent],
+  declarations:[ClientiComponent],
   imports: [
     CommonModule,
     BrowserModule,
     DxDataGridModule,
   ],
-  exports: [ServiziComponent]
+  exports: [ClientiComponent]
 })
-export class ServiziModule {}
+export class ClientiModule {}

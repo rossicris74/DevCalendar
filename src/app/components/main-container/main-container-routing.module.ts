@@ -4,6 +4,7 @@ import { DevCalendarComponent } from '../dev-calendar/dev-calendar.component';
 import { ExampleCompOneComponent } from '../../base/components/example-comp-one/example-comp-one.component';
 import { RoomsComponent } from '../rooms/rooms.component';
 import { ServiziComponent } from '../servizi/servizi.component';
+import { ClientiComponent } from '../clienti/clienti.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'folders', component: ExampleCompOneComponent },
   { path: 'rooms', component: RoomsComponent },
   { path: 'services', component: ServiziComponent },
+  { path: 'clienti', component: ClientiComponent },
 ];
 
 @NgModule({

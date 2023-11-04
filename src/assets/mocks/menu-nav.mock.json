@@ -26,6 +26,13 @@
       "menuNavLink": "services",
       "menuNavClass": "menuNavGree",
       "menuNavIcon":"fa-solid fa-folder-open fa-2x"
+    },
+    {
+      "menuNavId": 5,
+      "menuNavDesc": "Clienti",
+      "menuNavLink": "clienti",
+      "menuNavClass": "menuNavGree",
+      "menuNavIcon":"fa-solid fa-folder-open fa-2x"
     }
   ]
   
