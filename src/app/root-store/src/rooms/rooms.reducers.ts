@@ -24,7 +24,6 @@ const RoomsReducer = createReducer(
   }),
 
   on(roomsActions.insertRoomSuccess, (state, {room}) => {
-    debugger;
     const updRoom: RoomsType.Room = {id:room.id, text:room?.descrizione ? room.descrizione:'' ,color: ''};
     let updRoomList = Copy.deepCopy(state.roomList);
     updRoomList.push(updRoom);
@@ -32,6 +31,12 @@ const RoomsReducer = createReducer(
     roomList: updRoomList}
   }),
 
+  on(roomsActions.deleteRoomSuccess, (state, {id}) => {
+    debugger;
+    const updRoomList = Copy.deepCopy(state.roomList).filter(room => room.id !== id);
+    return {...state,
+    roomList: updRoomList}
+  }),
 );
 
 export function reducer(state: State | undefined, action: Action) {

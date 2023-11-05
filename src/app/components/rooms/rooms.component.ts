@@ -18,7 +18,6 @@ export class RoomsComponent implements OnInit{
   
   constructor(
     private readonly store: Store<RoomStoreState.State>,
-    readonly roomsApiService: RoomsApi.RoomsService
     ) {}
 
 
@@ -46,7 +45,7 @@ export class RoomsComponent implements OnInit{
 }
 
  onDelete(id: number){
-  this.roomsApiService.delete(id).subscribe();
+  this.store.dispatch(roomsActions.deleteRoom({id}));
  }
 
  rowInserted(room: RoomsApi.RoomsType.Room){

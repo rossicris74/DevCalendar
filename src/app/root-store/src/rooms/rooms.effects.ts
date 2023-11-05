@@ -73,6 +73,28 @@ export class RoomsEffects{
               ),
             ),
     );
+
+    deleteRoom = createEffect(() => 
+    this.actions$.pipe(
+      ofType(RoomsActions.deleteRoom),
+          switchMap(({id}) => 
+            this.roomsService.delete(id,).pipe(
+                  switchMap(() => 
+                      of<Action>(
+                          RoomsActions.deleteRoomSuccess({id}),
+                  ),
+                  ),
+                  catchError(error =>
+                    of(RoomsActions.deleteRoomFailure({
+                      msg: 'Cannot delete room',
+                      error
+                    }),
+                  ), 
+                ),
+              ),
+            ),
+          ),
+  );
     constructor(private readonly actions$: Actions, private readonly roomsService: RoomsApi.RoomsService, private readonly store: Store<RootStoreState.State>){}
 }
 

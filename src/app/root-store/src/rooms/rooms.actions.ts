@@ -41,3 +41,17 @@ export const insertRoomFailure = createAction(
   '[Rooms API ] Insert room failure', props<{msg: string, error: any}>(),
 )
 // Inserimento di una stanza - Fine
+
+// Cancellazione di una stanza - Inizio
+export const deleteRoom = createAction(
+  '[Rooms API ] Delete room', props<{id: number}>(),
+);
+
+export const deleteRoomSuccess = createAction(
+  '[Rooms API ] Delete room success', props<{id:number}>(),
+)
+
+export const deleteRoomFailure = createAction(
+  '[Rooms API ] Delete room failure', props<{msg: string, error: any}>(),
+)
+// Cancellazione di una stanza - Fine

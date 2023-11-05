@@ -2,7 +2,7 @@ import { ApiFailureResponse } from '../../api/responses/api-failure-response.typ
 import { ApiSuccessResponse } from '../../api/responses/api-success-response.type';
 
 // delete di una singola stanza
-export const deleteRoomEndpoint = (id:number) => `stanze/${id}`;
+export const deleteRoomEndpoint = (id:number) => `stanza/${id}`;
 
 export type DeleteRoomSuccessResponse = ApiSuccessResponse<{}>;
 
