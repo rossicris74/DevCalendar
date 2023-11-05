@@ -3,6 +3,7 @@ import { ApiFailureResponse } from '../../api/responses/api-failure-response.typ
 import { ApiSuccessResponse } from '../../api/responses/api-success-response.type';
 import { RoomsType } from '../public-api';
 
+// test per git
 export const getRoomJsonDbEndpoint = () => `room/`;
 export const getRoomLocalEndpoint = () => `/assets/mocks/rooms.mock.json`;
 

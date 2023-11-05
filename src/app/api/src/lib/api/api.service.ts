@@ -25,6 +25,121 @@ export class ApiService {
     private readonly httpClient: HttpClient
   ) {}
 
+  change<Success, Body>(
+    endpoint: string,
+    body: Body,
+    time = 60000
+  ): Observable<Success> {
+   const pippo: string = `${this.urlsProviderService.getBeUrl()}/${endpoint}`;
+    return callTimeout(
+      this.httpClient.patch<Success>(
+        `${this.urlsProviderService.getBeUrl()}/${endpoint}`,
+        body
+      ),
+      endpoint,
+      time
+    );
+  }
+
+  update<Success, Body>(
+    endpoint: string,
+    body: Body,
+    time = 60000
+  ): Observable<Success> {
+    return callTimeout(
+      this.httpClient.put<Success>(
+        `${this.urlsProviderService.getBeUrl()}/${endpoint}`,
+        body
+      ),
+      endpoint,
+      time
+    );
+  }
+
+  create<Success, Body>(
+       endpoint: string,
+       body: Body,
+       time = 60000
+     ): Observable<Success> {
+       return callTimeout(
+         this.httpClient.post<Success>(
+          `${this.urlsProviderService.getBeUrl()}/${endpoint}`,
+           body
+         ),
+         endpoint,
+         time
+       );
+     }
+
+ readJsonDb<Success>(endpoint: string, time = 60000): Observable<Success> {
+   const pippo: string = `${this.urlsProviderService.getJsonDbUrl()}/${endpoint}`;
+   return callTimeout(
+     this.httpClient.get<Success>(
+       `${this.urlsProviderService.getJsonDbUrl()}/${endpoint}`
+     ),
+     endpoint,
+     time
+   );
+ }
+
+ readBeUrl<Success>(endpoint: string, time = 60000): Observable<Success> {
+   const pippo: string = `${this.urlsProviderService.getBeUrl()}/${endpoint}`;
+   return callTimeout(
+     this.httpClient.get<Success>(
+       `${this.urlsProviderService.getBeUrl()}/${endpoint}`
+     ),
+     endpoint,
+     time
+   );
+ }
+
+ readLocal<Success>(endpoint: string, time = 60000): Observable<Success> {
+   return callTimeout(this.httpClient.get<Success>(endpoint), endpoint, time);
+ }
+
+   delete<Success>(endpoint: string, time = 60000): Observable<Success> {
+     return callTimeout(
+       this.httpClient.delete<Success>(
+        `${this.urlsProviderService.getBeUrl()}/${endpoint}`
+       ),
+       endpoint,
+       time
+     );
+   }
+
+ // readLocalBlob<Success>(endpoint: string, time = 60000): Observable<Success> {
+ //   return callTimeout(
+ //     this.httpClient.get<Success>(endpoint, {
+ //       responseType: 'blob' as 'json',
+ //     }),
+ //     endpoint,
+ //     time
+ //   );
+ // }
+}
+
+/**
+* time è il timeout delle chiamate in millisecondi. Se la chiamata impiega più del timeout viene
+* lanciato un CustomTimeoutError
+* Default 60000 millisecondi (un minuto)
+* se time = 0 timeout disattivato
+*/
+const callTimeout = <T>(
+ call: Observable<T>,
+ endpoint: string,
+ time: number
+): Observable<T> => {
+ const val = time === 0 ? tap<T>() : timeout<T>(time);
+ return call.pipe(
+   val,
+   first(),
+   catchError((err) => {
+     const error =
+       err instanceof TimeoutError ? new CustomTimeoutError(endpoint) : err;
+     return throwError(error);
+   })
+ );
+
   // create<Success, Body>(
   //   endpoint: string,
   //   body: Body,
@@ -40,35 +155,11 @@ export class ApiService {
   //   );
   // }
 
-  // createEditor<Success, Body>(
-  //   endpoint: string,
-  //   body: Body,
-  //   time = 60000
-  // ): Observable<Success> {
-  //   return callTimeout(
-  //     this.httpClient.post<Success>(
-  //       `${this.urlsProvider.getUrls().editorRootUrl}/${endpoint}`,
-  //       body
-  //     ),
-  //     endpoint,
-  //     time
-  //   );
-  // }
-
+  
   // delete<Success>(endpoint: string, time = 60000): Observable<Success> {
   //   return callTimeout(
   //     this.httpClient.delete<Success>(
   //       `${this.urlsProvider.getUrls().apiRootUrl}/${endpoint}`
-  //     ),
-  //     endpoint,
-  //     time
-  //   );
-  // }
-
-  // deleteEditor<Success>(endpoint: string, time = 60000): Observable<Success> {
-  //   return callTimeout(
-  //     this.httpClient.delete<Success>(
-  //       `${this.urlsProvider.getUrls().editorRootUrl}/${endpoint}`
   //     ),
   //     endpoint,
   //     time
@@ -131,20 +222,6 @@ export class ApiService {
   //   );
   // }
 
-  // update<Success, Body>(
-  //   endpoint: string,
-  //   body: Body,
-  //   time = 60000
-  // ): Observable<Success> {
-  //   return callTimeout(
-  //     this.httpClient.put<Success>(
-  //       `${this.urlsProvider.getUrls().apiRootUrl}/${endpoint}`,
-  //       body
-  //     ),
-  //     endpoint,
-  //     time
-  //   );
-  // }
 
   // updateAsync<Success, Body>(
   //   endpoint: string,
@@ -367,78 +444,4 @@ export class ApiService {
   //     time
   //   );
   // }
-
-  // change<Success, Body>(
-  //   endpoint: string,
-  //   body: Body,
-  //   time = 60000
-  // ): Observable<Success> {
-  //   return callTimeout(
-  //     this.httpClient.patch<Success>(
-  //       `${this.urlsProvider.getUrls().apiRootUrl}/${endpoint}`,
-  //       body
-  //     ),
-  //     endpoint,
-  //     time
-  //   );
-  // }
-
-  readJsonDb<Success>(endpoint: string, time = 60000): Observable<Success> {
-    const pippo: string = `${this.urlsProviderService.getJsonDbUrl()}/${endpoint}`;
-    return callTimeout(
-      this.httpClient.get<Success>(
-        `${this.urlsProviderService.getJsonDbUrl()}/${endpoint}`
-      ),
-      endpoint,
-      time
-    );
-  }
-
-  readBeUrl<Success>(endpoint: string, time = 60000): Observable<Success> {
-    const pippo: string = `${this.urlsProviderService.getBeUrl()}/${endpoint}`;
-    return callTimeout(
-      this.httpClient.get<Success>(
-        `${this.urlsProviderService.getBeUrl()}/${endpoint}`
-      ),
-      endpoint,
-      time
-    );
-  }
-
-  readLocal<Success>(endpoint: string, time = 60000): Observable<Success> {
-    return callTimeout(this.httpClient.get<Success>(endpoint), endpoint, time);
-  }
-
-  // readLocalBlob<Success>(endpoint: string, time = 60000): Observable<Success> {
-  //   return callTimeout(
-  //     this.httpClient.get<Success>(endpoint, {
-  //       responseType: 'blob' as 'json',
-  //     }),
-  //     endpoint,
-  //     time
-  //   );
-  // }
-}
-
-/**
- * time è il timeout delle chiamate in millisecondi. Se la chiamata impiega più del timeout viene
- * lanciato un CustomTimeoutError
- * Default 60000 millisecondi (un minuto)
- * se time = 0 timeout disattivato
- */
-const callTimeout = <T>(
-  call: Observable<T>,
-  endpoint: string,
-  time: number
-): Observable<T> => {
-  const val = time === 0 ? tap<T>() : timeout<T>(time);
-  return call.pipe(
-    val,
-    first(),
-    catchError((err) => {
-      const error =
-        err instanceof TimeoutError ? new CustomTimeoutError(endpoint) : err;
-      return throwError(error);
-    })
-  );
 };

@@ -15,10 +15,24 @@
     },
     {
       "menuNavId": 3,
-      "menuNavDesc": "Info corsi",
-      "menuNavLink": "info-corsi",
+      "menuNavDesc": "Rooms",
+      "menuNavLink": "rooms",
       "menuNavClass": "menuNavGree",
       "menuNavIcon":"fa-solid fa-bed fa-2x"
+    },
+    {
+      "menuNavId": 4,
+      "menuNavDesc": "Services",
+      "menuNavLink": "services",
+      "menuNavClass": "menuNavGree",
+      "menuNavIcon":"fa-solid fa-folder-open fa-2x"
+    },
+    {
+      "menuNavId": 5,
+      "menuNavDesc": "Clienti",
+      "menuNavLink": "clienti",
+      "menuNavClass": "menuNavGree",
+      "menuNavIcon":"fa-solid fa-folder-open fa-2x"
     }
   ]
   

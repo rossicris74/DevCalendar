@@ -14,5 +14,4 @@ export class MainContainerComponent {
   navTo(url_string: string) {
     this.router.navigate([url_string])
   }
-
 }

@@ -3,7 +3,8 @@ import { Store } from '@ngrx/store';
 import * as TestState from './root-store/src/test/state';
 import * as TestActions from './root-store/src/test/test.actions';
 import * as TestSelectors from './root-store/src/test/test.selectors';
-
+import * as RoomsState from './root-store/src/rooms/rooms.state';
+import * as RoomsActions from './root-store/src/rooms/rooms.actions';
 @Component({
   selector: 'demo-app',
   templateUrl: 'app.component.html',
@@ -12,7 +13,8 @@ import * as TestSelectors from './root-store/src/test/test.selectors';
 export class AppComponent implements OnInit {
   getId$ = this.testStore.select(TestSelectors.getId);
   getDescr$ = this.testStore.select(TestSelectors.getDescr);
-  constructor(private readonly testStore: Store<TestState.State>) {}
+  constructor(private readonly testStore: Store<TestState.State>,private readonly roomsStore: Store<RoomsState.State>) {
+  }
 
   ngOnInit() {
     this.testStore.dispatch(
@@ -21,6 +23,9 @@ export class AppComponent implements OnInit {
         descr: 'Test',
       })
     );
+     this.roomsStore.dispatch(
+      RoomsActions.getAllRooms()
+     );
     this.getId$.subscribe((id) => console.log('id: ' + id));
     this.getDescr$.subscribe((descr) => console.log('descr: ' + descr));
   }

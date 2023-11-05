@@ -1,0 +1,44 @@
+  <div id="data-grid-demo">
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="dataSource"
+    keyExpr="id"
+    [showBorders]="true"
+    (onSaved)="onSave($event)"
+  >
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-editing
+      mode="popup"
+      [allowUpdating]="true"
+      [allowAdding]="true"
+      [allowDeleting]="true"
+    >
+      <dxo-popup
+        title="Gestione servizi"
+        [showTitle]="true"
+        [width]="700"
+        [height]="525"
+      >
+      </dxo-popup>
+      <dxo-form>
+        <dxi-item itemType="group" [colCount]="4" [colSpan]="4">
+          <dxi-item dataField="id"></dxi-item>
+          <dxi-item dataField="descrizione"></dxi-item>
+          <dxi-item dataField="durata"></dxi-item>
+          <dxi-item dataField="colore"></dxi-item>
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing>
+
+    <dxi-column dataField="id" caption="Id" [width]="50"></dxi-column>
+    <dxi-column dataField="descrizione" caption="Descrizione" [width]="250"></dxi-column>
+    <dxi-column dataField="durata" caption="Durata" [width]="100"></dxi-column>
+    <dxi-column dataField="colore" caption="Colore" [width]="100"></dxi-column>
+    
+  </dx-data-grid>
+</div>
+<!--
+  <div>
+  Work in progress
+</div>
+--> 
