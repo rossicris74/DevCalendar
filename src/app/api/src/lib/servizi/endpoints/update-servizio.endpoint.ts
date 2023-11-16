@@ -3,7 +3,7 @@ import { ApiFailureResponse } from '../../api/responses/api-failure-response.typ
 import { ApiSuccessResponse } from '../../api/responses/api-success-response.type';
 
 // Update di un singolo servizio
-export const updateServizioEndpoint = (id:number) => `servizi/${id}`;
+export const updateServizioEndpoint = (id:number) => `servizio/${id}`;
 
 export type UpdateServizioSuccessResponse = ApiSuccessResponse<{}>;
 

@@ -5,6 +5,8 @@ import * as TestActions from './root-store/src/test/test.actions';
 import * as TestSelectors from './root-store/src/test/test.selectors';
 import * as RoomsState from './root-store/src/rooms/rooms.state';
 import * as RoomsActions from './root-store/src/rooms/rooms.actions';
+import * as ServiziState from './root-store/src/servizi/servizi.state';
+import * as ServiziActions from './root-store/src/servizi/servizi.actions';
 @Component({
   selector: 'demo-app',
   templateUrl: 'app.component.html',
@@ -13,7 +15,9 @@ import * as RoomsActions from './root-store/src/rooms/rooms.actions';
 export class AppComponent implements OnInit {
   getId$ = this.testStore.select(TestSelectors.getId);
   getDescr$ = this.testStore.select(TestSelectors.getDescr);
-  constructor(private readonly testStore: Store<TestState.State>,private readonly roomsStore: Store<RoomsState.State>) {
+  constructor(private readonly testStore: Store<TestState.State>,
+              private readonly roomsStore: Store<RoomsState.State>,
+              private readonly serviziStore: Store<ServiziState.State>) {
   }
 
   ngOnInit() {
@@ -25,6 +29,9 @@ export class AppComponent implements OnInit {
     );
      this.roomsStore.dispatch(
       RoomsActions.getAllRooms()
+     );
+     this.serviziStore.dispatch(
+      ServiziActions.getAllServizi()
      );
     this.getId$.subscribe((id) => console.log('id: ' + id));
     this.getDescr$.subscribe((descr) => console.log('descr: ' + descr));

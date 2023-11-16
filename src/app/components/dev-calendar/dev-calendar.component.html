@@ -22,6 +22,7 @@
       [firstDayOfWeek]="1"
       [crossScrollingEnabled]="true"
       dateCellTemplate="dateCellTemplate"
+      (onAppointmentFormOpening)="onAppointmentFormOpening($event)"
     >
       <div *dxTemplate="let data of 'dateCellTemplate'">
         <div class="name">
@@ -36,7 +37,7 @@
         [dataSource]="data.rooms"
         fieldExpr="priorityId"
         label="Stanze"
-        [allowMultiple]="true"
+        [allowMultiple]="false"
       ></dxi-resource>
     </dx-scheduler>
 

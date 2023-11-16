@@ -16,6 +16,7 @@ import { RoomsModule } from './components/rooms/rooms.module';
 import { ServiziModule } from './components/servizi/servizi.module'
 import { TestStoreModule } from './root-store/src/test/test-store.module';
 import { RoomsStoreModule } from './root-store/src/rooms/rooms-store.module';
+import { ServiziStoreModule } from './root-store/src/servizi/servizi-store.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { RoomsStoreModule } from './root-store/src/rooms/rooms-store.module';
     MainContainerModule,
     RoomsModule,
     RoomsStoreModule,
+    ServiziStoreModule,
     TestStoreModule,
     ServiziModule,
     StoreModule.forRoot({}),

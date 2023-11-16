@@ -16,7 +16,7 @@ const RoomsReducer = createReducer(
 
   on(roomsActions.updateRoomSuccess, (state, {room}) => {
     const idx = state.roomList.findIndex(ele => ele.id === room.id);
-    const updRoom = idx >-1 ? {id:room.id, text:room.text,color:room.color} : room;
+    const updRoom = idx >-1 ? {id:room.id, text:room.text} : room;
     const updRoomList = Copy.deepCopy(state.roomList);
     if (idx > -1) {updRoomList[idx] = updRoom;}
     return {...state,
@@ -24,7 +24,7 @@ const RoomsReducer = createReducer(
   }),
 
   on(roomsActions.insertRoomSuccess, (state, {room}) => {
-    const updRoom: RoomsType.Room = {id:room.id, text:room?.descrizione ? room.descrizione:'' ,color: ''};
+    const updRoom: RoomsType.Room = {id:room.id, text:room?.descrizione ? room.descrizione:'' };
     let updRoomList = Copy.deepCopy(state.roomList);
     updRoomList.push(updRoom);
     return {...state,
@@ -32,7 +32,6 @@ const RoomsReducer = createReducer(
   }),
 
   on(roomsActions.deleteRoomSuccess, (state, {id}) => {
-    debugger;
     const updRoomList = Copy.deepCopy(state.roomList).filter(room => room.id !== id);
     return {...state,
     roomList: updRoomList}

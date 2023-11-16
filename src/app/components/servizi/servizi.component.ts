@@ -1,6 +1,10 @@
 import { Component, Injectable} from '@angular/core';
 import * as ServiziApi from '../../api/src/lib/servizi/public-api';
-
+import * as RoomStoreState from '../../root-store/src/rooms/rooms.state';
+import { Store } from '@ngrx/store';
+import * as serviziSelectors from '../../root-store/src/servizi/servizi.selectors';
+import * as serviziActions from '../../root-store/src/servizi/servizi.actions';
+import * as Copy from '../../utils/deep-copy';
 @Component({
   selector: 'servizi',
   templateUrl: './servizi.component.html',
@@ -9,13 +13,15 @@ import * as ServiziApi from '../../api/src/lib/servizi/public-api';
 @Injectable({providedIn: 'root'})
 export class ServiziComponent {
   dataSource: ServiziApi.ServiziType.Servizi = [];
+  serviziList$ = this.store.select(serviziSelectors.getServiziList);
   
   constructor(
-    readonly serviziApiService: ServiziApi.ServiziService
+    private readonly store: Store<RoomStoreState.State>,
     ) {
-    serviziApiService.getAllServizi().subscribe(servizi => 
-      {
-      this.dataSource = servizi});
+   // serviziApiService.getAllServizi().subscribe(servizi => 
+     // {
+      //this.dataSource = servizi});
+      this.serviziList$.subscribe(serviziList => this.dataSource = Copy.deepCopy(serviziList))
  }
 
 
@@ -39,14 +45,14 @@ export class ServiziComponent {
 }
 
  onDelete(id: number){
-  this.serviziApiService.delete(id).subscribe();
+  this.store.dispatch(serviziActions.deleteServizio({id}));
  }
 
  rowInserted(servizio: ServiziApi.ServiziType.Servizio){
-  this.serviziApiService.insert(servizio.descrizione,servizio.durata,servizio.colore).subscribe();
+  this.store.dispatch(serviziActions.insertServizio({servizio}));
  }
 
  rowUpdated(servizio: ServiziApi.ServiziType.Servizio){
-  this.serviziApiService.update(servizio.id, servizio.descrizione, servizio.durata, servizio.colore).subscribe();
+  this.store.dispatch(serviziActions.updateServizio({servizio}));
  }
 }

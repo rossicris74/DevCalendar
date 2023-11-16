@@ -5,7 +5,6 @@ export type RoomsApi = RoomApi[];
 export type Room = {
   text: string;
   id: number;
-  color: string;
 };
 
 export type RoomHydraApi = {
