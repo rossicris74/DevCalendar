@@ -1,30 +1,29 @@
-import { Component, Injectable} from '@angular/core';
- import * as RoomsApi from '../../api/src/lib/rooms/public-api';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { Component, Injectable, OnInit} from '@angular/core';
+import * as RoomsApi from '../../api/src/lib/rooms/public-api';
+import * as roomsSelectors from '../../root-store/src/rooms/rooms.selectors';
+import * as roomsActions from '../../root-store/src/rooms/rooms.actions';
+import { Store } from '@ngrx/store';
+import * as RoomStoreState from '../../root-store/src/rooms/rooms.state';
+import * as Copy from '../../utils/deep-copy';
 
 @Component({
   selector: 'rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css'],
-  // providers: [RoomsService],
 })
 @Injectable({providedIn: 'root'})
-export class RoomsComponent {
+export class RoomsComponent implements OnInit{
   dataSource: RoomsApi.RoomsType.Rooms = [];
+  roomList$ = this.store.select(roomsSelectors.getRoomList);
   
   constructor(
-    readonly roomsApiService: RoomsApi.RoomsService
-    ) {
-    roomsApiService.getAllRoomsBeUrl().subscribe(rooms => 
-      {
-      this.dataSource = rooms});
-    // service.getEmployees();
-    // this.states = service.getStates();
-    // this.roomsApiService.getRoomJsonDb();
- }
+    private readonly store: Store<RoomStoreState.State>,
+    ) {}
 
+
+  ngOnInit(): void {
+    this.roomList$.subscribe(roomsList => this.dataSource = Copy.deepCopy(roomsList))
+  }
 
  onSave(e:any){
   const typeSave = e.changes[0].type;
@@ -34,7 +33,7 @@ export class RoomsComponent {
     case 'insert':  
       this.rowInserted(data);
        break;  
-    case 'updated':
+    case 'update':
       this.rowUpdated(data);
        break; 
     case 'remove':
@@ -46,14 +45,14 @@ export class RoomsComponent {
 }
 
  onDelete(id: number){
-  this.roomsApiService.delete(id).subscribe();
+  this.store.dispatch(roomsActions.deleteRoom({id}));
  }
 
  rowInserted(room: RoomsApi.RoomsType.Room){
-  this.roomsApiService.insert(room.text).subscribe();
+  this.store.dispatch(roomsActions.insertRoom({room}));
  }
 
  rowUpdated(room: RoomsApi.RoomsType.Room){
-  this.roomsApiService.update(room.id,room.text).subscribe();
+  this.store.dispatch(roomsActions.updateRoom({room}));
  }
 }
