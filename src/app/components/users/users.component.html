@@ -1,0 +1,42 @@
+  <div id="data-grid-demo">
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="dataSource"
+    keyExpr="id"
+    [showBorders]="true"
+    (onSaved)="onSave($event)"
+  >
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-editing
+      mode="popup"
+      [allowUpdating]="true"
+      [allowAdding]="true"
+      [allowDeleting]="true"
+    >
+      <dxo-popup
+        title="Gestione servizi"
+        [showTitle]="true"
+        [width]="700"
+        [height]="525"
+      >
+      </dxo-popup>
+      <dxo-form>
+        <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
+          <dxi-item dataField="id"></dxi-item>
+          <dxi-item dataField="nome" ></dxi-item>
+          <dxi-item dataField="username"></dxi-item>
+          <dxi-item dataField="email"></dxi-item>
+          <dxi-item dataField="isVerified"></dxi-item>
+          <dxi-item dataField="isDisabled"></dxi-item>
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing>
+
+    <dxi-column dataField="id" caption="Id" [width]="50"></dxi-column>
+    <dxi-column dataField="nome" caption="nome" [width]="250"></dxi-column>
+    <dxi-column dataField="username" caption="UserName" [width]="100"></dxi-column>
+    <dxi-column dataField="email" caption="Email" [width]="100"></dxi-column>
+    <dxi-column dataField="isVerified" caption="Verificato" [width]="100"></dxi-column>
+    <dxi-column dataField="isDisabled" caption="Disabilitato" [width]="100"></dxi-column>
+  </dx-data-grid>
+</div>

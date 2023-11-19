@@ -14,9 +14,11 @@ import { DxDataGridModule } from 'devextreme-angular';
 import { ClientiModule } from './components/clienti/clienti.module';
 import { RoomsModule } from './components/rooms/rooms.module';
 import { ServiziModule } from './components/servizi/servizi.module'
+import { UsersModule } from './components/users/users.module';
 import { TestStoreModule } from './root-store/src/test/test-store.module';
 import { RoomsStoreModule } from './root-store/src/rooms/rooms-store.module';
 import { ServiziStoreModule } from './root-store/src/servizi/servizi-store.module';
+import { UsersStoreModule } from './root-store/src/users/users-store.module';
 
 
 @NgModule({
@@ -34,8 +36,10 @@ import { ServiziStoreModule } from './root-store/src/servizi/servizi-store.modul
     RoomsModule,
     RoomsStoreModule,
     ServiziStoreModule,
+    UsersStoreModule,
     TestStoreModule,
     ServiziModule,
+    UsersModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
