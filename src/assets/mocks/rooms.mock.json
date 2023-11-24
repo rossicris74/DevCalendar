@@ -1,16 +1,16 @@
 [
   {
-    "text": "Moon",
+    "descrizione": "Moon",
     "id": 1,
     "color": "#1e90ff"
   },
   {
-    "text": "Sun",
+    "descrizione": "Sun",
     "id": 2,
     "color": "#ff9747"
   },
   {
-    "text": "Nails",
+    "descrizione": "Nails",
     "id": 3,
     "color": "green"
   }

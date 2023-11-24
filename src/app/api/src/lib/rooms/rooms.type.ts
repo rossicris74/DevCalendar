@@ -3,8 +3,8 @@ export type Rooms = Room[];
 export type RoomsApi = RoomApi[];
 
 export type Room = {
-  text: string;
   id: number;
+  descrizione: string;
 };
 
 export type RoomHydraApi = {
@@ -22,3 +22,10 @@ export type RoomApi = {
   id: number;
   descrizione: string;
 };
+
+export type ListRooms4Group = Room4Group[];
+
+export type Room4Group = {
+  id: number;
+  text: string;
+}

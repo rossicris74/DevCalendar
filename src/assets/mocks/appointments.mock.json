@@ -1,8 +1,9 @@
 [
   {
-    "text": "Website Re-Design Plan",
-    "priorityId": 2,
+    "text": "Ceretta",
+    "priorityId": 3,
     "utente_id": 1,
+    "color":"red",
     "startDate": "2021-04-19T16:30:00.000Z",
     "endDate": "2021-04-19T18:30:00.000Z"
   },
@@ -17,26 +18,27 @@
     "text": "Install New Router in Dev Room",
     "priorityId": 1,
     "utente_id": 2,
+    "color":"red",
     "startDate": "2021-04-18T20:00:00.000Z",
     "endDate": "2021-04-18T22:30:00.000Z"
   },
   {
     "text": "Approve Personal Computer Upgrade Plan",
-    "priorityId": 2,
+    "priorityId": 3,
     "utente_id": 3,
     "startDate": "2021-04-20T17:00:00.000Z",
     "endDate": "2021-04-20T18:00:00.000Z"
   },
   {
     "text": "Final Budget Review",
-    "priorityId": 2,
+    "priorityId": 3,
     "utente_id": 1,
     "startDate": "2021-04-20T19:00:00.000Z",
     "endDate": "2021-04-20T20:35:00.000Z"
   },
   {
     "text": "New Brochures",
-    "priorityId": 2,
+    "priorityId": 3,
     "utente_id": 4,
     "startDate": "2021-04-19T20:00:00.000Z",
     "endDate": "2021-04-19T22:15:00.000Z"

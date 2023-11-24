@@ -34,7 +34,7 @@ export class RoomsEffects{
       this.actions$.pipe(
         ofType(RoomsActions.updateRoom),
             switchMap(({room}) => 
-              this.roomsService.update(room.id,room.text).pipe(
+              this.roomsService.update(room.id,room.descrizione).pipe(
                     switchMap(() => 
                         of<Action>(
                             RoomsActions.updateRoomSuccess({room}),
@@ -56,7 +56,7 @@ export class RoomsEffects{
       this.actions$.pipe(
         ofType(RoomsActions.insertRoom),
             switchMap(({room}) => 
-              this.roomsService.insert(room.text).pipe(
+              this.roomsService.insert(room.descrizione).pipe(
                     switchMap((newRoom) => 
                         of<Action>(
                             RoomsActions.insertRoomSuccess({room: newRoom}),

@@ -2,27 +2,34 @@
 <ng-container
 *ngIf="{
   rooms: devCalendarSandbox.rooms$ | async,
-  appointments: devCalendarSandbox.appointments$ | async
+  appointments: devCalendarSandbox.appointments$ | async,
+  apps4Sched: devCalendarSandbox.apps4Sched$| async,
+  listUser4Group: devCalendarSandbox.listUsers4Group$| async,
+  listRooms4Group: devCalendarSandbox.listRooms4Group$| async,
 } as data";
 >
 <div call="dx-viewport">
 <!--La ngIf nel dx-scheduler mi serve per evitare che, 
     se rooms è vuoto il componente vada in errore -->
 <dx-scheduler
-      *ngIf="data.rooms && data.rooms.length >0"
-      timeZone="America/Los_Angeles"
-      [dataSource]="data.appointments"
+      *ngIf="data.listRooms4Group && data.listRooms4Group.length > 0 &&
+             data.listUser4Group && data.listUser4Group.length > 0"
+      timeZone="Europe/Rome"
+      [dataSource]="data.apps4Sched"
       currentView="week"
       [currentDate]="devCalendarSandbox.currentDate"
       [(groupByDate)]="devCalendarSandbox.groupByDate"
       [startDayHour]="7"
       [endDayHour]="20"
-      [groups]="['priorityId']"
+      [groups]="['userId']"
       [height]="700"
       [firstDayOfWeek]="1"
       [crossScrollingEnabled]="true"
       dateCellTemplate="dateCellTemplate"
-      (onAppointmentFormOpening)="onAppointmentFormOpening($event)"
+      (onAppointmentFormOpening)="onAppointmentFormOpening($event, data.listRooms4Group, data.listUser4Group)"
+      (onAppointmentUpdated)="onAppointmentUpdated($event)"
+      (onAppointmentUpdating)="onAppointmentUpdating($event)"
+      
     >
       <div *dxTemplate="let data of 'dateCellTemplate'">
         <div class="name">
@@ -30,12 +37,18 @@
           'Sab'][data.date.getDay()]}}
         </div>
       </div>
-      <dxi-view type="week" name="Settimana"> </dxi-view>
-      <dxi-view type="month" name="Mese"> </dxi-view>
-      <dxi-view type="day" name="Giorno"> </dxi-view>
+      <dxi-view type="week"   name="Settimana"> </dxi-view>
+      <dxi-view type="month"  name="Mese"> </dxi-view>
+      <dxi-view type="day"    name="Giorno"> </dxi-view>
       <dxi-resource
-        [dataSource]="data.rooms"
-        fieldExpr="priorityId"
+        [dataSource]="data.listUser4Group"
+        fieldExpr="userId"
+        label="Utenti"
+        [allowMultiple]="false"
+      ></dxi-resource>
+      <dxi-resource
+        [dataSource]="data.listRooms4Group"
+        fieldExpr="roomId"
         label="Stanze"
         [allowMultiple]="false"
       ></dxi-resource>

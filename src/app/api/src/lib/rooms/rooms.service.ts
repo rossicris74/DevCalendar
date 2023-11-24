@@ -61,12 +61,12 @@ export class RoomsService {
     );
   }
 
-  update (id:number, text:string):Observable<any> {
-     return this.api.update<UpdateRoomSuccessResponse, UpdateRoomBody>(updateRoomEndpoint(id),{"descrizione":text})
+  update (id:number, descrizione:string):Observable<any> {
+     return this.api.update<UpdateRoomSuccessResponse, UpdateRoomBody>(updateRoomEndpoint(id),{"descrizione":descrizione})
   }
 
-  insert(text:string ):Observable<any> {
-     return this.api.create<CreateRoomSuccessResponse, CreateRoomBody>(createRoomEndpoint(),{"descrizione":text})
+  insert(descrizione:string ):Observable<any> {
+     return this.api.create<CreateRoomSuccessResponse, CreateRoomBody>(createRoomEndpoint(),{"descrizione":descrizione})
   }
 
   delete(id: number):Observable<any> {

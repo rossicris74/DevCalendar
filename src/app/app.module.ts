@@ -17,6 +17,7 @@ import { ServiziModule } from './components/servizi/servizi.module'
 import { UsersModule } from './components/users/users.module';
 import { TestStoreModule } from './root-store/src/test/test-store.module';
 import { RoomsStoreModule } from './root-store/src/rooms/rooms-store.module';
+import { AppuntamentiStoreModule } from './root-store/src/appuntamenti/appuntamenti-store.module';
 import { ServiziStoreModule } from './root-store/src/servizi/servizi-store.module';
 import { UsersStoreModule } from './root-store/src/users/users-store.module';
 
@@ -34,6 +35,7 @@ import { UsersStoreModule } from './root-store/src/users/users-store.module';
     HttpClientModule,
     MainContainerModule,
     RoomsModule,
+    AppuntamentiStoreModule,
     RoomsStoreModule,
     ServiziStoreModule,
     UsersStoreModule,

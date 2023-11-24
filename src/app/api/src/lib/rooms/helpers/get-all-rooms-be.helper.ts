@@ -5,7 +5,7 @@ export function fromApiToClient(roomsHydraApi: RoomsType.RoomHydraApi) :RoomsTyp
     roomsApi.forEach(roomApi => {
         const room: RoomsType.Room  = {
             id: roomApi.id,
-            text: roomApi.descrizione
+            descrizione: roomApi.descrizione
         };
         rooms.push(room);
     });

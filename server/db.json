@@ -3,21 +3,21 @@
   {
     "text": "Moon",
     "id": 1,
-    "color": "#1e90ff"
+    "color": "red"
   },
   {
     "text": "Sun",
     "id": 2,
-    "color": "#ff9747"
+    "color": "orange"
   },
   {
     "text": "Nails",
     "id": 3,
-    "color": "green"
+    "color":"yellow"
   },
 {
     "text": "Neptune",
     "id": 4,
-    "color": "blue"
+    "color":"green"
   }
 ]}

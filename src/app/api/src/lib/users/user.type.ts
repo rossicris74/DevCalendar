@@ -35,5 +35,12 @@ export type UserApi = {
   isDisabled: false;
 };
 
+export type ListUsers4Group = User4Group[];
+
+export type User4Group = {
+  id: number;
+  text: string;
+}
+
 
 
