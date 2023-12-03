@@ -44,8 +44,8 @@ export class AppuntamentiService {
     ).pipe(map(AppuntamentiHelper.fromApiToClient));
   }
 
-  update (appuntamento: AppuntamentiType.Appuntamento):Observable<any> {
-     return this.api.update<UpdateAppuntamentoSuccessResponse, UpdateAppuntamentoBody>(updateAppuntamentoEndpoint(appuntamento.id),appuntamento)
+  update (app4Scheduler: AppuntamentiType.App4Scheduler):Observable<any> {
+     return this.api.update<UpdateAppuntamentoSuccessResponse, UpdateAppuntamentoBody>(updateAppuntamentoEndpoint(app4Scheduler.id),app4Scheduler)
   }
 
   insert(appuntamento: AppuntamentiType.Appuntamento ):Observable<any> {

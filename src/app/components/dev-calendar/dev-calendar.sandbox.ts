@@ -1,62 +1,40 @@
 import {Injectable} from '@angular/core'
-import {
-    AppointmentsService,
-    AppointmentsType,
-  } from '../../api/src/lib/appointments/public-api';
-  import {
-    AppuntamentiService,
-    AppuntamentiType,
-  } from '../../api/src/lib/appuntamenti/public-api';
-  import {
-    RoomsService,
-    RoomsType,
-  } from '../../api/src/lib/rooms/public-api';
-  import { Store } from '@ngrx/store';
-//import * as roomsSelectors from '../../root-store/src/rooms/rooms.selectors';
-//import * as RoomStoreState from '../../root-store/src/rooms/rooms.state';
-import * as usersSelectors from '../../root-store/src/users/users.selectors';
+import { Store } from '@ngrx/store';
 import * as UsersStoreState from '../../root-store/src/users/users.state';
+import * as usersSelectors from '../../root-store/src/users/users.selectors';
+import * as ClientiStoreState from '../../root-store/src/clienti/clienti.state';
+import * as clientiSelectors from '../../root-store/src/clienti/clienti.selectors';
+import * as ServiziStoreState from '../../root-store/src/servizi/servizi.state';
+import * as serviziSelectors from '../../root-store/src/servizi/servizi.selectors';
 import * as AppuntamentiStoreState from '../../root-store/src/appuntamenti/appuntamenti.state';
-import * as AppuntamentiSelectors from '../../root-store/src/appuntamenti/appuntamenti.selectors';
-import * as roomsSelectors from '../../root-store/src/rooms/rooms.selectors';
+import * as appuntamentiSelectors from '../../root-store/src/appuntamenti/appuntamenti.selectors';
+import * as AppuntamentiActions from '../../root-store/src/appuntamenti/appuntamenti.actions';
 import * as RoomsStoreState from '../../root-store/src/rooms/rooms.state';
-import { UsersType } from 'src/app/api/src/lib/users/public-api';
+import * as roomsSelectors from '../../root-store/src/rooms/rooms.selectors';
+import * as AppuntamentiType from '../../api/src/lib/appuntamenti/appuntamenti.type'
+
 @Injectable()
 export class DevCalendarSandbox {
     [x: string]: any;
-    // Parte mockata vecchia gestione - Inizio
-    rooms$ = this.roomsService.getAllRoomsJsonDb();
     listUsers4Group$ = this.usersStore.select(usersSelectors.getUserList4Group);
     listRooms4Group$ = this.roomsStore.select(roomsSelectors.getRoomList4Group);
-    appuntamenti$ = this.appuntamentiStore.select(AppuntamentiSelectors.getAllAppuntamenti);
-    appointments$ = this.appointmentsService.getAppointmentsLocal();
-    apps4Sched$ = this.appuntamentiStore.select(AppuntamentiSelectors.getApp4Scheduler);
-    currentDate: Date = new Date(2021, 3, 21);
-    rooms: RoomsType.Rooms = [];
-    users: UsersType.Users = [];
-    appointments: AppointmentsType.Appointments = [];
-    // Parte mockata vecchia gestione - Fine
-
+    listServizi4Group$ = this.serviziStore.select(serviziSelectors.getServiziList4Group);
+    listClienti4Group$ = this.clientiStore.select(clientiSelectors.getClientiList4Group);
+    apps4Sched$ = this.appuntamentiStore.select(appuntamentiSelectors.getApp4Scheduler);
+    currentDate: Date = new Date(2021, 3, 27);
     groupByDate = true;
 
     constructor(
-      private readonly roomsService: RoomsService,
-      private readonly appointmentsService: AppointmentsService,
       private readonly usersStore: Store<UsersStoreState.State>,
+      private readonly serviziStore: Store<ServiziStoreState.State>,
       private readonly appuntamentiStore: Store<AppuntamentiStoreState.State>,
       private readonly roomsStore: Store<RoomsStoreState.State>,
-    ) {
-      // Parte mockata vecchia gestione - Inizio
-          this.roomsService.getAllRoomsJsonDb().subscribe((rooms) => {
-            this.rooms = rooms;
-            console.log(this.rooms);
-          });
-          this.appointmentsService
-            .getAppointmentsLocal()
-            .subscribe((appointments) => {
-              this.appointments = appointments;
-              console.log(this.appointments);
-            }); 
-      // Parte mockata vecchia gestione - Fine
-}
+      private readonly clientiStore: Store<ClientiStoreState.State>,
+    ) {}
+
+    updateAppointment(app4Scheduler: AppuntamentiType.App4Scheduler){
+      this.appuntamentiStore.dispatch(
+        AppuntamentiActions.updateAppuntamento({app4Scheduler})
+       );
+    }
 }

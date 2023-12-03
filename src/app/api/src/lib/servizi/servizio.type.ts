@@ -26,3 +26,13 @@ export type ServizioApi = {
   durata: number;
   colore: string
 };
+
+export type ListServizi4Group = Servizio4Group[];
+
+export type Servizio4Group = {
+  id: number;
+  text: string;
+  color: string;
+  durata: number;
+}
+

@@ -12,7 +12,7 @@ export class AppuntamentiEffects{
       this.actions$.pipe(
         ofType(AppuntamentiActions.getAllAppuntamenti),
             switchMap(() => 
-              this.appuntamentiService.getAllAppLocal().pipe(
+              this.appuntamentiService.getAllAppuntamenti().pipe(
                     switchMap(appuntamenti => 
                         of<Action>(
                             AppuntamentiActions.getAllAppuntamentiSuccess({appuntamenti}),
@@ -33,11 +33,11 @@ export class AppuntamentiEffects{
     updateAppuntamento = createEffect(() => 
       this.actions$.pipe(
         ofType(AppuntamentiActions.updateAppuntamento),
-            switchMap(({appuntamento}) => 
-              this.appuntamentiService.update(appuntamento).pipe(
+            switchMap(({app4Scheduler}) => 
+              this.appuntamentiService.update(app4Scheduler).pipe(
                     switchMap(() => 
                         of<Action>(
-                            AppuntamentiActions.updateAppuntamentoSuccess({updAppuntamento: appuntamento}),
+                            AppuntamentiActions.updateAppuntamentoSuccess({app4Scheduler}),
                     ),
                     ),
                     catchError(error =>

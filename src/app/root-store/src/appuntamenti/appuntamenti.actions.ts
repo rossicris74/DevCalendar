@@ -16,11 +16,11 @@ export const getAllAppuntamentiFailure = createAction(
 
 // Aggiornamento di una stanza - Inizio
 export const updateAppuntamento = createAction(
-  '[Appuntamenti API ] Update appuntamento', props<{appuntamento: AppuntamentiType.Appuntamento}>(),
+  '[Appuntamenti API ] Update appuntamento', props<{app4Scheduler: AppuntamentiType.App4Scheduler}>(),
 );
 
 export const updateAppuntamentoSuccess = createAction(
-  '[Appuntamenti API ] Update appuntamento success', props<{updAppuntamento: AppuntamentiType.Appuntamento}>(),
+  '[Appuntamenti API ] Update appuntamento success', props<{app4Scheduler: AppuntamentiType.App4Scheduler}>(),
 )
 
 export const updateAppuntamentoFailure = createAction(

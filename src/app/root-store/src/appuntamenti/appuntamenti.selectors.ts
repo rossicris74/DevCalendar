@@ -18,9 +18,11 @@ export const getApp4Scheduler = createSelector( getAppuntamentiState,getAllAppun
                 text: appuntamento.text,
                 userId: appuntamento.utente_id,
                 roomId: appuntamento.roomId,
-                color: appuntamento.color,
+                cliId: appuntamento.cliId,
+                servId: appuntamento.servId,
                 startDate: appuntamento.startDate,
-                endDate: appuntamento.endDate}
+                endDate: appuntamento.endDate,
+                note: appuntamento.note}
             apps4scheduler.push(app4Sched);}
         )
     }

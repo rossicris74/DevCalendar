@@ -36,3 +36,13 @@ export type ClienteApi = {
   data_inserimento: string;
   data_ultimo_aggiornamento: string
 };
+
+export type ListClienti4Group = Cliente4Group[];
+
+export type Cliente4Group = {
+  id: number;
+  text: string;
+  nome: string;
+  cognome: string;
+  email: string;
+}

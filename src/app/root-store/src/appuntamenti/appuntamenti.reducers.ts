@@ -14,13 +14,13 @@ const AppuntamentiReducer = createReducer(
     appuntamenti
   })),
 
-  on(appuntamentiActions.updateAppuntamentoSuccess, (state, {updAppuntamento}) => {
-    const idx = state.appuntamenti.findIndex(ele => ele.id === updAppuntamento.id);
-    const updAppuntamenti: AppuntamentiType.Appuntamenti = Copy.deepCopy(state.appuntamenti);
-    if (idx > -1) {updAppuntamenti[idx] = updAppuntamento} 
-    return {...state,
-    roomList: updAppuntamenti}
-  }),
+  // on(appuntamentiActions.updateAppuntamentoSuccess, (state, {updAppuntamento}) => {
+  //  const idx = state.appuntamenti.findIndex(ele => ele.id === updAppuntamento.id);
+  //  const updAppuntamenti: AppuntamentiType.Appuntamenti = Copy.deepCopy(state.appuntamenti);
+  //  if (idx > -1) {updAppuntamenti[idx] = updAppuntamento} 
+  //  return {...state,
+  //  roomList: updAppuntamenti}
+  // }),
 
   on(appuntamentiActions.insertAppuntamentoSuccess, (state, {appuntamento}) => {
     let updAppuntamentiList = Copy.deepCopy(state.appuntamenti);

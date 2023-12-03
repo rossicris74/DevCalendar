@@ -1,11 +1,11 @@
 
 <ng-container
 *ngIf="{
-  rooms: devCalendarSandbox.rooms$ | async,
-  appointments: devCalendarSandbox.appointments$ | async,
   apps4Sched: devCalendarSandbox.apps4Sched$| async,
   listUser4Group: devCalendarSandbox.listUsers4Group$| async,
   listRooms4Group: devCalendarSandbox.listRooms4Group$| async,
+  listServizi4Group: devCalendarSandbox.listServizi4Group$| async,
+  listClienti4Group: devCalendarSandbox.listClienti4Group$| async,
 } as data";
 >
 <div call="dx-viewport">
@@ -13,20 +13,21 @@
     se rooms è vuoto il componente vada in errore -->
 <dx-scheduler
       *ngIf="data.listRooms4Group && data.listRooms4Group.length > 0 &&
-             data.listUser4Group && data.listUser4Group.length > 0"
+             data.listUser4Group && data.listUser4Group.length > 0 &&
+             data.listServizi4Group && data.listServizi4Group.length > 0"
       timeZone="Europe/Rome"
       [dataSource]="data.apps4Sched"
-      currentView="week"
+      currentView="day"
       [currentDate]="devCalendarSandbox.currentDate"
       [(groupByDate)]="devCalendarSandbox.groupByDate"
-      [startDayHour]="7"
+      [startDayHour]="9"  
       [endDayHour]="20"
       [groups]="['userId']"
       [height]="700"
       [firstDayOfWeek]="1"
-      [crossScrollingEnabled]="true"
+      [crossScrollingEnabled]="false"
       dateCellTemplate="dateCellTemplate"
-      (onAppointmentFormOpening)="onAppointmentFormOpening($event, data.listRooms4Group, data.listUser4Group)"
+      (onAppointmentFormOpening)="onAppointmentFormOpening($event, data.listRooms4Group, data.listUser4Group, data.listClienti4Group ,data.listServizi4Group )"
       (onAppointmentUpdated)="onAppointmentUpdated($event)"
       (onAppointmentUpdating)="onAppointmentUpdating($event)"
       
@@ -46,10 +47,11 @@
         label="Utenti"
         [allowMultiple]="false"
       ></dxi-resource>
-      <dxi-resource
-        [dataSource]="data.listRooms4Group"
-        fieldExpr="roomId"
-        label="Stanze"
+      <dxi-resource 
+        [dataSource]="data.listServizi4Group"
+        fieldExpr="servId"
+        label="Servizi"
+        [useColorAsDefault]="true"
         [allowMultiple]="false"
       ></dxi-resource>
     </dx-scheduler>

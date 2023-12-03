@@ -53,7 +53,7 @@ export type AppuntamentoApi = {
   id: number;
   data_appuntamento: string;
   note: string;
-  cliente: Cliente;
+  clienti: Cliente;
   stanza: Room;
   servizio: Servizio;
   user: User;
@@ -64,7 +64,9 @@ export type App4Scheduler = {
   text: string,
   userId: number,
   roomId: number,
-  color: string,
+  cliId: number,
+  servId: number,
   startDate: Date,
-  endDate: Date
+  endDate: Date,
+  note: string,
 }
