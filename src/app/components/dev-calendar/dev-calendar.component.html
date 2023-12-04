@@ -30,7 +30,6 @@
       (onAppointmentFormOpening)="onAppointmentFormOpening($event, data.listRooms4Group, data.listUser4Group, data.listClienti4Group ,data.listServizi4Group )"
       (onAppointmentUpdated)="onAppointmentUpdated($event)"
       (onAppointmentUpdating)="onAppointmentUpdating($event)"
-      
     >
       <div *dxTemplate="let data of 'dateCellTemplate'">
         <div class="name">
@@ -57,6 +56,7 @@
     </dx-scheduler>
 
     <div class="options">
+      <div><dx-button *ngFor="let user of data.listUser4Group">{{user.text}}</dx-button></div>
       <div class="caption">raggruppamento per data</div>
       <div class="option">
         <dx-switch [(value)]="devCalendarSandbox.groupByDate"> </dx-switch>
