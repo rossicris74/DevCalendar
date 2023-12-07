@@ -30,14 +30,14 @@ export class AppuntamentiEffects{
             ),
     );
 
-    updateAppuntamento = createEffect(() => 
+     updateAppuntamento = createEffect(() => 
       this.actions$.pipe(
         ofType(AppuntamentiActions.updateAppuntamento),
             switchMap(({app4Scheduler}) => 
-              this.appuntamentiService.update(app4Scheduler).pipe(
-                    switchMap(() => 
+              this.appuntamentiService.update(app4Scheduler.id, app4Scheduler).pipe(
+                     switchMap((updAppuntamento) => 
                         of<Action>(
-                            AppuntamentiActions.updateAppuntamentoSuccess({app4Scheduler}),
+                            AppuntamentiActions.updateAppuntamentoSuccess({updAppuntamento}),
                     ),
                     ),
                     catchError(error =>
@@ -55,11 +55,11 @@ export class AppuntamentiEffects{
     insertAppuntamento = createEffect(() => 
       this.actions$.pipe(
         ofType(AppuntamentiActions.insertAppuntamento),
-            switchMap(({appuntamento}) => 
-              this.appuntamentiService.insert(appuntamento).pipe(
-                    switchMap((newAppuntamento) => 
+            switchMap(({app4Scheduler}) => 
+              this.appuntamentiService.insert(app4Scheduler).pipe(
+                    switchMap((insAppuntamento) => 
                         of<Action>(
-                            AppuntamentiActions.insertAppuntamentoSuccess({appuntamento: newAppuntamento}),
+                            AppuntamentiActions.insertAppuntamentoSuccess({insAppuntamento}),
                     ),
                     ),
                     catchError(error =>

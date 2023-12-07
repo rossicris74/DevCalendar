@@ -20,7 +20,7 @@ export const updateAppuntamento = createAction(
 );
 
 export const updateAppuntamentoSuccess = createAction(
-  '[Appuntamenti API ] Update appuntamento success', props<{app4Scheduler: AppuntamentiType.App4Scheduler}>(),
+  '[Appuntamenti API ] Update appuntamento success', props<{updAppuntamento: AppuntamentiType.AppuntamentoInsUpdApi}>(),
 )
 
 export const updateAppuntamentoFailure = createAction(
@@ -30,11 +30,11 @@ export const updateAppuntamentoFailure = createAction(
 
 // Inserimento di una stanza - Inizio
 export const insertAppuntamento = createAction(
-  '[Appuntamenti API ] Insert appuntamento', props<{appuntamento: AppuntamentiType.Appuntamento}>(),
+  '[Appuntamenti API ] Insert appuntamento', props<{app4Scheduler: AppuntamentiType.App4Scheduler}>(),
 );
 
 export const insertAppuntamentoSuccess = createAction(
-  '[Appuntamenti API ] Insert appuntamento success', props<{appuntamento: AppuntamentiType.Appuntamento}>(),
+  '[Appuntamenti API ] Insert appuntamento success', props<{insAppuntamento: AppuntamentiType.AppuntamentoInsUpdApi}>(),
 )
 
 export const insertAppuntamentoFailure = createAction(

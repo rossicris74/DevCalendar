@@ -23,7 +23,7 @@ import {
   deleteAppuntamentoEndpoint
 } from './endpoints/delete-appuntamento.endpoint';
 import * as AppuntamentiType from './appuntamenti.type';
-import * as AppuntamentiHelper from './helpers/get-appuntamenti.helper';
+import * as AppuntamentiHelper from './helpers/appuntamenti.helper';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -35,21 +35,21 @@ export class AppuntamentiService {
   getAllAppuntamenti(): Observable<AppuntamentiType.Appuntamenti> {
     return this.api.readBeUrl<GetAllAppuntamentiSuccessResponse>(
       getAllAppuntamentiEndpoint()
-    ).pipe(map(AppuntamentiHelper.fromApiToClient));
+    ).pipe(map(AppuntamentiHelper.fromApiHydraToClient));
   }
 
   getAllAppLocal(): Observable<AppuntamentiType.Appuntamenti> {
     return this.api.readLocal<GetAllAppuntamentiSuccessResponse>(
       getAllAppuntamentiLocalEndpoint()
-    ).pipe(map(AppuntamentiHelper.fromApiToClient));
+    ).pipe(map(AppuntamentiHelper.fromApiHydraToClient));
   }
 
-  update (app4Scheduler: AppuntamentiType.App4Scheduler):Observable<any> {
-     return this.api.update<UpdateAppuntamentoSuccessResponse, UpdateAppuntamentoBody>(updateAppuntamentoEndpoint(app4Scheduler.id),app4Scheduler)
+  update (id:number, app4Scheduler: AppuntamentiType.App4Scheduler):Observable<AppuntamentiType.AppuntamentoInsUpdApi> {
+     return this.api.update<UpdateAppuntamentoSuccessResponse, UpdateAppuntamentoBody>(updateAppuntamentoEndpoint(id),AppuntamentiHelper.fromClientToApi(app4Scheduler));
   }
 
-  insert(appuntamento: AppuntamentiType.Appuntamento ):Observable<any> {
-     return this.api.create<CreateAppuntamentoSuccessResponse, CreateAppuntamentoBody>(createAppuntamentoEndpoint(),appuntamento)
+  insert(app4Scheduler: AppuntamentiType.App4Scheduler ):Observable<AppuntamentiType.AppuntamentoInsUpdApi> {
+     return this.api.create<CreateAppuntamentoSuccessResponse, CreateAppuntamentoBody>(createAppuntamentoEndpoint(),AppuntamentiHelper.fromClientToApi(app4Scheduler))
   }
 
   delete(id: number):Observable<any> {

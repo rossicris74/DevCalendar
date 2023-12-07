@@ -3,7 +3,7 @@ import { DevCalendarSandbox } from './dev-calendar.sandbox';
 import * as RoomsType from 'src/app/api/src/lib/rooms/rooms.type';
 import { ListUsers4Group } from 'src/app/api/src/lib/users/user.type';
 import * as ServiziType from 'src/app/api/src/lib/servizi/servizio.type';
-import {getEndDate} from 'src/app/api/src/lib/appuntamenti/helpers/get-appuntamenti.helper';
+import {getEndDate} from 'src/app/api/src/lib/appuntamenti/helpers/appuntamenti.helper';
 import Query from 'devextreme/data/query';
 import { ListClienti4Group } from 'src/app/api/src/lib/clienti/clienti.type';
 
@@ -28,17 +28,22 @@ export class DevCalendarComponent {
     const form = data.form;
     let startDate = data.appointmentData.startDate;
     let servId = data.appointmentData.servId;
+    let note = data.appointmentData.text;
 
     form.option('items', [
       {
         label: {
           text: 'Descrizione',
         },
-        name: 'text',
+        name: 'note',
         editorType: 'dxTextBox',
         editorOptions: {
-          value: data.appointmentData.text,
+          value: note,
           readOnly: false,
+          onValueChanged(args: any) {
+            note = args.value ? args.value : "";
+            form.updateData('note', note);
+          },
         },
       },
       {
@@ -127,9 +132,14 @@ export class DevCalendarComponent {
   }
 
   onAppointmentUpdated(data:any){
-    console.log(data);
+    this.devCalendarSandbox.updateAppointment(data.appointmentData);
   }
-  onAppointmentUpdating(data:any){
-    console.log(data);
+  
+  onAppointmentAdded(data:any){
+    this.devCalendarSandbox.insertAppointment(data.appointmentData);
+  }
+
+  onAppointmentDeleted(data:any){
+    this.devCalendarSandbox.deleteAppointment(data.appointmentData.id);
   }
 }

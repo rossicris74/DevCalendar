@@ -3,6 +3,8 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { initialState, State } from './appuntamenti.state';
 import * as Copy from '../../../utils/deep-copy';
 import * as AppuntamentiType from '../../../api/src/lib/appuntamenti/appuntamenti.type';
+import * as AppuntamentiHelpers from 'src/app/api/src/lib/appuntamenti/helpers/appuntamenti.helper';
+
 
 export const AppuntamentiFeatureKey = 'Appuntamenti';
 
@@ -14,25 +16,25 @@ const AppuntamentiReducer = createReducer(
     appuntamenti
   })),
 
-  // on(appuntamentiActions.updateAppuntamentoSuccess, (state, {updAppuntamento}) => {
-  //  const idx = state.appuntamenti.findIndex(ele => ele.id === updAppuntamento.id);
-  //  const updAppuntamenti: AppuntamentiType.Appuntamenti = Copy.deepCopy(state.appuntamenti);
-  //  if (idx > -1) {updAppuntamenti[idx] = updAppuntamento} 
-  //  return {...state,
-  //  roomList: updAppuntamenti}
-  // }),
-
-  on(appuntamentiActions.insertAppuntamentoSuccess, (state, {appuntamento}) => {
-    let updAppuntamentiList = Copy.deepCopy(state.appuntamenti);
-    updAppuntamentiList.push(appuntamento);
+   on(appuntamentiActions.updateAppuntamentoSuccess, (state, {updAppuntamento}) => {
+    const idx = state.appuntamenti.findIndex(ele => ele.id === updAppuntamento.id);
+    const updAppuntamenti: AppuntamentiType.Appuntamenti = Copy.deepCopy(state.appuntamenti);
+    if (idx > -1) {updAppuntamenti[idx] = AppuntamentiHelpers.fromApiToClientInsUpd(updAppuntamento)} 
     return {...state,
-    roomList: updAppuntamentiList}
+      appuntamenti: updAppuntamenti}
+   }),
+
+  on(appuntamentiActions.insertAppuntamentoSuccess, (state, {insAppuntamento}) => {
+    let updAppuntamentiList = Copy.deepCopy(state.appuntamenti);
+    updAppuntamentiList.push(AppuntamentiHelpers.fromApiToClientInsUpd(insAppuntamento));
+    return {...state,
+      appuntamenti: updAppuntamentiList}
   }),
 
   on(appuntamentiActions.deleteAppuntamentoSuccess, (state, {id}) => {
-    const updRoomList = Copy.deepCopy(state.appuntamenti).filter(appuntamento => appuntamento.id !== id);
+    const updAppuntamentiList = Copy.deepCopy(state.appuntamenti).filter(appuntamento => appuntamento.id !== id);
     return {...state,
-    roomList: updRoomList}
+      appuntamenti: updAppuntamentiList}
   }),
 );
 

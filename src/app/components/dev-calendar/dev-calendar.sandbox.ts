@@ -21,7 +21,7 @@ export class DevCalendarSandbox {
     listServizi4Group$ = this.serviziStore.select(serviziSelectors.getServiziList4Group);
     listClienti4Group$ = this.clientiStore.select(clientiSelectors.getClientiList4Group);
     apps4Sched$ = this.appuntamentiStore.select(appuntamentiSelectors.getApp4Scheduler);
-    currentDate: Date = new Date(2021, 3, 27);
+    currentDate: Date = new Date('2023-04-04');
     groupByDate = true;
 
     constructor(
@@ -35,6 +35,18 @@ export class DevCalendarSandbox {
     updateAppointment(app4Scheduler: AppuntamentiType.App4Scheduler){
       this.appuntamentiStore.dispatch(
         AppuntamentiActions.updateAppuntamento({app4Scheduler})
+       );
+    }
+
+    insertAppointment(app4Scheduler: AppuntamentiType.App4Scheduler){
+      this.appuntamentiStore.dispatch(
+        AppuntamentiActions.insertAppuntamento({app4Scheduler})
+       );
+    }
+
+    deleteAppointment(id: number){
+      this.appuntamentiStore.dispatch(
+        AppuntamentiActions.deleteAppuntamento({id})
        );
     }
 }
