@@ -21,7 +21,10 @@ export class DevCalendarSandbox {
     listServizi4Group$ = this.serviziStore.select(serviziSelectors.getServiziList4Group);
     listClienti4Group$ = this.clientiStore.select(clientiSelectors.getClientiList4Group);
     apps4Sched$ = this.appuntamentiStore.select(appuntamentiSelectors.getApp4Scheduler);
-    currentDate: Date = new Date('2023-04-04');
+    currentDate: Date = new Date(
+      (new Date()).getFullYear().toString() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + "-" +
+                                 (new Date().getDate().toString().padStart(2, '0'))
+    );
     groupByDate = true;
 
     constructor(

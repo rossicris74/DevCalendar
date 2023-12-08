@@ -22,7 +22,7 @@
       </dxo-popup>
       <dxo-form>
         <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
-          <dxi-item dataField="id"></dxi-item>
+          <dxi-item [disabled]="true" dataField="id"></dxi-item>
           <dxi-item dataField="descrizione" ></dxi-item>
           <dxi-item dataField="durata"></dxi-item>
           <dxi-item dataField="colore" editorType="dxColorBox"></dxi-item>
@@ -30,7 +30,7 @@
       </dxo-form>
     </dxo-editing>
 
-    <dxi-column dataField="id" caption="Id" [width]="50"></dxi-column>
+    <dxi-column  dataField="id" caption="Id" [width]="50"></dxi-column>
     <dxi-column dataField="descrizione" caption="Descrizione" [width]="250"></dxi-column>
     <dxi-column dataField="durata" caption="Durata" [width]="100"></dxi-column>
     <dxi-column dataField="colore" caption="Colore" [width]="100"></dxi-column>

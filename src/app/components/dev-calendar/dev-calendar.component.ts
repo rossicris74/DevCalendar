@@ -29,7 +29,8 @@ export class DevCalendarComponent {
     let startDate = data.appointmentData.startDate;
     let servId = data.appointmentData.servId;
     let note = data.appointmentData.text;
-
+    data.popup.option("toolbarItems[0].options.text", "Salva");
+    data.popup.option("toolbarItems[1].options.text", "Esci");
     form.option('items', [
       {
         label: {
