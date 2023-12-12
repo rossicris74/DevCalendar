@@ -3,3 +3,8 @@
   .dx-scheduler-group-header-content {
   font-size: 11px;
 }
+
+::ng-deep div.dx-widget.dx-collection.dx-responsivebox-screen-lg.dx-responsivebox {  
+  height: 500px !important;
+} 
+
