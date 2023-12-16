@@ -1,22 +1,28 @@
-import { Component, Injectable} from '@angular/core';
+import { Component, Injectable, OnInit} from '@angular/core';
 import * as ClientiApi from '../../api/src/lib/clienti/public-api';
-
+import { Store } from '@ngrx/store';
+import * as ClientiStoreState from '../../root-store/src/clienti/clienti.state';
+import * as ClientiActions from '../../root-store/src/clienti/clienti.actions';
+import * as clientiSelectors from '../../root-store/src/clienti/clienti.selectors';
+import * as Copy from '../../utils/deep-copy';
 @Component({
   selector: 'clienti',
   templateUrl: './clienti.component.html',
   styleUrls: ['./clienti.component.css'],
 })
 @Injectable({providedIn: 'root'})
-export class ClientiComponent {
+export class ClientiComponent implements OnInit{
   dataSource: ClientiApi.ClientiType.Clienti = [];
   
   constructor(
-    readonly clientiApiService: ClientiApi.ClientiService
+    readonly clientiApiService: ClientiApi.ClientiService,
+    private readonly clientiStore: Store<ClientiStoreState.State>,
     ) {
-    clientiApiService.getAllClienti().subscribe(clienti => 
-      {
-      this.dataSource = clienti});
  }
+ 
+  ngOnInit(): void {
+    this.clientiStore.select(clientiSelectors.getClientiList).subscribe(clientiList => this.dataSource = Copy.deepCopy(clientiList))
+  }
 
 
  onSave(e:any){
@@ -43,8 +49,10 @@ export class ClientiComponent {
  }
 
  rowInserted(cliente: ClientiApi.ClientiType.Cliente){
-  this.clientiApiService.insert(cliente).subscribe();
- }
+    this.clientiStore.dispatch(
+      ClientiActions.insertCliente({cliente})
+     );
+  }
 
  rowUpdated(cliente: ClientiApi.ClientiType.Cliente){
   this.clientiApiService.update(cliente).subscribe();

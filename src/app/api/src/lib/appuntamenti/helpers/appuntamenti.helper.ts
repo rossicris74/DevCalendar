@@ -1,5 +1,6 @@
 import { deepCopy } from 'src/app/utils/deep-copy';
 import * as AppuntamentiType from '../appuntamenti.type';
+import * as DateUtils from '../../../utils/date.utils';
 export function fromApiHydraToClient(appuntamentoHydraApi: AppuntamentiType.AppuntamentoHydraApi) :AppuntamentiType.Appuntamenti{
     const appuntamentiApi: AppuntamentiType.AppuntamentiApi = appuntamentoHydraApi['hydra:member'];
     const appuntamenti: AppuntamentiType.Appuntamenti = fromApiToClient(appuntamentiApi);
@@ -19,11 +20,12 @@ export function fromApiHydraToClient(appuntamentoHydraApi: AppuntamentiType.Appu
    const appUpdApi: AppuntamentiType.AppUpdApi = {
         cliente: app4Scheduler.cliId,
         stanza: app4Scheduler.roomId,
-        data_appuntamento:  utcDate.getFullYear() + "-" +
-                           (utcDate.getMonth() + 1).toString().padStart(2, '0') +    "-" +
-                            utcDate.getDate().toString().padStart(2, '0') + " " +
-                            utcDate.getHours().toString().padStart(2, '0') + ":" +
-                            utcDate.getMinutes().toString().padStart(2, '0'),
+        data_appuntamento: DateUtils.dateTime2StringFormat1(utcDate),
+        //utcDate.getFullYear() + "-" +
+        //                   (utcDate.getMonth() + 1).toString().padStart(2, '0') +    "-" +
+        //                    utcDate.getDate().toString().padStart(2, '0') + " " +
+        //                    utcDate.getHours().toString().padStart(2, '0') + ":" +
+        //                    utcDate.getMinutes().toString().padStart(2, '0'),
         note: app4Scheduler.note ? app4Scheduler.note : "",
         servizio: app4Scheduler.servId,
         user: app4Scheduler.userId

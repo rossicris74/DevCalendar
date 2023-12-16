@@ -29,6 +29,8 @@ export class DevCalendarComponent {
     let startDate = data.appointmentData.startDate;
     let servId = data.appointmentData.servId;
     let note = data.appointmentData.text;
+    if (!data.appointmentData.cliId) {form.updateData('cliId', 1);};
+    
     data.popup.option("toolbarItems[0].options.text", "Salva");
     data.popup.option("toolbarItems[1].options.text", "Esci");
     form.option('items', [
@@ -56,7 +58,7 @@ export class DevCalendarComponent {
         editorOptions: {
           items: listClienti4Group,
           displayExpr: 'text',
-          valueExpr: 'id'
+          valueExpr: 'id',
         },
       },
       {

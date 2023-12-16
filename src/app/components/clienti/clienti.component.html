@@ -26,6 +26,9 @@
           <dxi-item dataField="cognome"></dxi-item>
           <dxi-item dataField="nome"></dxi-item>
           <dxi-item dataField="codiceFiscale"></dxi-item>
+          <dxi-item dataField="dataNascita" editorType="dxDateBox" [editorOptions]="{displayFormat:'dd/MM/yyyy'}"></dxi-item>
+          <dxi-item dataField="email"></dxi-item>
+          <dxi-item dataField="telefono"></dxi-item>
         </dxi-item>
       </dxo-form>
     </dxo-editing>
@@ -34,6 +37,12 @@
     <dxi-column dataField="cognome" caption="Cognome" [width]="250"></dxi-column>
     <dxi-column dataField="nome" caption="Nome" [width]="250"></dxi-column>
     <dxi-column dataField="codiceFiscale" caption="Codice Fiscale" [width]="200"></dxi-column>
+    <dxi-column dataField="dataNascita" caption="Data nascita" dataType="date" [width]="200" cellTemplate="dateBoxTemplate"></dxi-column>
+    <dxi-column dataField="email" caption="Email" [width]="200"></dxi-column>
+    <dxi-column dataField="telefono" caption="Telefono" [width]="200"></dxi-column>
+    <div *dxTemplate="let cellData of 'dateBoxTemplate'">
+      {{cellData.value | date: 'dd/MM/yyyy'}}
+  </div>
     
   </dx-data-grid>
 </div>

@@ -17,7 +17,7 @@ export type Appuntamento = {
   cliCognome: string;
   cliNome: string;
   cliCodFisc: string;
-  cliDataNas: string;
+  cliDataNas: Date;
   cliEmail: string;
   roomId: number;
   roomDesc: string;

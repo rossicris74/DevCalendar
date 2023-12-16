@@ -1,6 +1,5 @@
 import { createEffect, Actions, ofType, } from "@ngrx/effects";
 import * as ClientiApi from "src/app/api/src/lib/clienti/public-api";
-import * as RootStoreState from '../state';
 import { Action, Store } from "@ngrx/store";
 import * as ClientiActions from './clienti.actions';
 import { catchError, of, switchMap } from "rxjs";
@@ -57,9 +56,9 @@ export class ClientiEffects{
         ofType(ClientiActions.insertCliente),
             switchMap(({cliente}) => 
               this.clientiService.insert(cliente).pipe(
-                    switchMap((cliente) => 
+                    switchMap((updCliente) => 
                         of<Action>(
-                            ClientiActions.insertClienteSuccess({cliente}),
+                            ClientiActions.insertClienteSuccess({cliente: updCliente}),
                     ),
                     ),
                     catchError(error =>
@@ -78,7 +77,7 @@ export class ClientiEffects{
     this.actions$.pipe(
       ofType(ClientiActions.deleteCliente),
           switchMap(({id}) => 
-            this.clientiService.delete(id,).pipe(
+            this.clientiService.delete(id).pipe(
                   switchMap(() => 
                       of<Action>(
                           ClientiActions.deleteClienteSuccess({id}),
@@ -95,7 +94,7 @@ export class ClientiEffects{
             ),
           ),
   );
-    constructor(private readonly actions$: Actions, private readonly clientiService: ClientiApi.ClientiService, private readonly store: Store<RootStoreState.State>){}
+    constructor(private readonly actions$: Actions, private readonly clientiService: ClientiApi.ClientiService){}
 }
 
 

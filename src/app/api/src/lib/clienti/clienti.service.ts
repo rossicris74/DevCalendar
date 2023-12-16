@@ -38,11 +38,11 @@ export class ClientiService {
   }
 
   update (cliente: ClientiType.Cliente):Observable<any> {
-     return this.api.update<UpdateClienteSuccessResponse, UpdateClienteBody>(updateClienteEndpoint(cliente.id),cliente)
+     return this.api.update<UpdateClienteSuccessResponse, UpdateClienteBody>(updateClienteEndpoint(cliente.id),ClientiHelper.fromClientToApi(cliente))  
   }
 
   insert(cliente: ClientiType.Cliente):Observable<any> {
-     return this.api.create<CreateClienteSuccessResponse, CreateClienteBody>(createClienteEndpoint(),cliente)
+     return this.api.create<CreateClienteSuccessResponse, CreateClienteBody>(createClienteEndpoint(),ClientiHelper.fromClientToApi(cliente))
   }
 
   delete(id: number):Observable<any> {
